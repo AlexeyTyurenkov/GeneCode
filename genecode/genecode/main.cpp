@@ -64,6 +64,7 @@ int main(int argc, const char * argv[])
         auto firstSeed = Gclass::empty();
         allget.push_back(firstSeed);
     }
+    
     for_each(allget.begin(), allget.end(), [](Gclass* gene){gene->save();});
     return 0;
 }

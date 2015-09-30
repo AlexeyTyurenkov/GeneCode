@@ -10,8 +10,13 @@
 #define __etc__Ship__
 
 #include <stdio.h>
+#include <vector>
+#include "Unit.h"
 class Ship
 {
-    
+private:
+    std::vector<Unit*> units;
+public:
+    Ship(std::vector<Unit*> vector):units(vector){};
 };
 #endif /* defined(__etc__Ship__) */
