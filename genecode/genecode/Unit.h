@@ -14,9 +14,11 @@
 class Unit
 {
     
-    
+protected:
+    int value;
 public:
-    virtual bool canFire() = 0;
+    virtual bool canFire() const = 0;
+    Unit(unsigned value):value(value){};
 };
 
 #endif /* defined(__etc__Unit__) */

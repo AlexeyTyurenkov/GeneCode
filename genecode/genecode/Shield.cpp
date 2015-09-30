@@ -9,7 +9,7 @@
 #include "Shield.h"
 
 
-bool Shield::canFire()
+bool Shield::canFire() const
 {
     return false;
 }

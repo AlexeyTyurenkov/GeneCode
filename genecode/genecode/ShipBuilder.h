@@ -16,7 +16,12 @@
 
 class ShipBuilder
 {
-    std::vector<Unit> units;
+    std::vector<Unit*> units;
+    
+public:
+    void addShield(unsigned value);
+    void addEngine(unsigned value);
+    void addGun(unsigned value);
 };
 
 #endif /* defined(__etc__ShipBuilder__) */

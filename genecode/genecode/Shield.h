@@ -17,7 +17,8 @@ class Shield: public Unit
     
     
 public:
-    bool canFire();
+    virtual bool canFire() const;
+    Shield(unsigned value):Unit(value){};
 };
 
 #endif /* defined(__etc__Shield__) */

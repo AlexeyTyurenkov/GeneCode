@@ -24,13 +24,9 @@ UnitType unittypefromCode(uint32_t T)
     switch (control)
     {
         case kStopStart:
-            result = kStopStart;
-            break;
         case kShield:
-            result = kShield;
-            break;
         case kEngine:
-            result = kEngine;
+            result = static_cast<UnitType>(control);
             break;
         default:
             break;
@@ -59,7 +55,16 @@ void Fleet::parse(uint32_t* array, size_t length)
         auto unitcode = array[i];
         UnitType type = unittypefromCode(unitcode);
         if (type == kUnknown) continue;
-        
+        auto value = unitcode & 0xFF;
+        switch (unitcode)
+        {
+            case kShield:
+                builder.addShield(value);
+                break;
+                
+            default:
+                break;
+        }
     }
 }
 
