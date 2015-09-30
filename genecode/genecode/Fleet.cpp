@@ -61,7 +61,6 @@ void Fleet::parse(uint32_t* array, size_t length)
         if (type == kUnknown) continue;
         
     }
-    if()
 }
 
 

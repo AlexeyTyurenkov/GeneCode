@@ -12,8 +12,12 @@
 #include <dirent.h>
 #include <vector>
 #include <algorithm>    // std::for_each
+#include "GLOBAL_CONST.h"
 
 using namespace std;
+
+
+
 
 bool isPrefix(string first, string second)
 {
@@ -29,7 +33,7 @@ bool isPrefix(string first, string second)
 
 void loadAll(std::vector<Gclass*>& all)
 {
-    string dirname = "/Users/oleksii_tiurenkov/testoutdir/";
+    string dirname = MAIN_DIR;
     DIR* dirp = opendir(dirname.c_str());
     while (auto dp = readdir(dirp))
     {

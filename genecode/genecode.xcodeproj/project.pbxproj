@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		D9B3804A1BBC78CF001BF29A /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D9B380491BBC78CF001BF29A /* main.cpp */; };
+		D9B3805C1BBC7A21001BF29A /* Fleet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D9B380501BBC7A21001BF29A /* Fleet.cpp */; };
+		D9B3805D1BBC7A21001BF29A /* Shield.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D9B380541BBC7A21001BF29A /* Shield.cpp */; };
+		D9B3805E1BBC7A21001BF29A /* gclass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D9B380551BBC7A21001BF29A /* gclass.cpp */; };
+		D9B3805F1BBC7A21001BF29A /* Unit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D9B380581BBC7A21001BF29A /* Unit.cpp */; };
+		D9B380601BBC7A21001BF29A /* ShipBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D9B380591BBC7A21001BF29A /* ShipBuilder.cpp */; };
+		D9B380611BBC7A21001BF29A /* Ship.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D9B3805B1BBC7A21001BF29A /* Ship.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +31,19 @@
 /* Begin PBXFileReference section */
 		D9B380461BBC78CF001BF29A /* genecode */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = genecode; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9B380491BBC78CF001BF29A /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		D9B380501BBC7A21001BF29A /* Fleet.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Fleet.cpp; path = genecode/Fleet.cpp; sourceTree = "<group>"; };
+		D9B380511BBC7A21001BF29A /* ShipBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShipBuilder.h; path = genecode/ShipBuilder.h; sourceTree = "<group>"; };
+		D9B380521BBC7A21001BF29A /* Fleet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Fleet.h; path = genecode/Fleet.h; sourceTree = "<group>"; };
+		D9B380531BBC7A21001BF29A /* Shield.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Shield.h; path = genecode/Shield.h; sourceTree = "<group>"; };
+		D9B380541BBC7A21001BF29A /* Shield.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Shield.cpp; path = genecode/Shield.cpp; sourceTree = "<group>"; };
+		D9B380551BBC7A21001BF29A /* gclass.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = gclass.cpp; path = genecode/gclass.cpp; sourceTree = "<group>"; };
+		D9B380561BBC7A21001BF29A /* gclass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = gclass.h; path = genecode/gclass.h; sourceTree = "<group>"; };
+		D9B380571BBC7A21001BF29A /* Unit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Unit.h; path = genecode/Unit.h; sourceTree = "<group>"; };
+		D9B380581BBC7A21001BF29A /* Unit.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Unit.cpp; path = genecode/Unit.cpp; sourceTree = "<group>"; };
+		D9B380591BBC7A21001BF29A /* ShipBuilder.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ShipBuilder.cpp; path = genecode/ShipBuilder.cpp; sourceTree = "<group>"; };
+		D9B3805A1BBC7A21001BF29A /* Ship.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Ship.h; path = genecode/Ship.h; sourceTree = "<group>"; };
+		D9B3805B1BBC7A21001BF29A /* Ship.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Ship.cpp; path = genecode/Ship.cpp; sourceTree = "<group>"; };
+		D9B380621BBC7A78001BF29A /* GLOBAL_CONST.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLOBAL_CONST.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,6 +60,19 @@
 		D9B3803D1BBC78CF001BF29A = {
 			isa = PBXGroup;
 			children = (
+				D9B380621BBC7A78001BF29A /* GLOBAL_CONST.h */,
+				D9B380501BBC7A21001BF29A /* Fleet.cpp */,
+				D9B380521BBC7A21001BF29A /* Fleet.h */,
+				D9B380531BBC7A21001BF29A /* Shield.h */,
+				D9B380541BBC7A21001BF29A /* Shield.cpp */,
+				D9B380551BBC7A21001BF29A /* gclass.cpp */,
+				D9B380561BBC7A21001BF29A /* gclass.h */,
+				D9B380571BBC7A21001BF29A /* Unit.h */,
+				D9B380581BBC7A21001BF29A /* Unit.cpp */,
+				D9B380591BBC7A21001BF29A /* ShipBuilder.cpp */,
+				D9B380511BBC7A21001BF29A /* ShipBuilder.h */,
+				D9B3805A1BBC7A21001BF29A /* Ship.h */,
+				D9B3805B1BBC7A21001BF29A /* Ship.cpp */,
 				D9B380481BBC78CF001BF29A /* genecode */,
 				D9B380471BBC78CF001BF29A /* Products */,
 			);
@@ -118,7 +150,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D9B3805E1BBC7A21001BF29A /* gclass.cpp in Sources */,
+				D9B380601BBC7A21001BF29A /* ShipBuilder.cpp in Sources */,
+				D9B3805C1BBC7A21001BF29A /* Fleet.cpp in Sources */,
+				D9B3805D1BBC7A21001BF29A /* Shield.cpp in Sources */,
 				D9B3804A1BBC78CF001BF29A /* main.cpp in Sources */,
+				D9B3805F1BBC7A21001BF29A /* Unit.cpp in Sources */,
+				D9B380611BBC7A21001BF29A /* Ship.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

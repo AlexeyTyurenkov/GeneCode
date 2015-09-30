@@ -9,12 +9,14 @@
 #ifndef __etc__ShipBuilder__
 #define __etc__ShipBuilder__
 
-#include <stdio.h>
+
+#include <vector>
 #include "Ship.h"
+#include "Unit.h"
 
 class ShipBuilder
 {
-    
+    std::vector<Unit> units;
 };
 
 #endif /* defined(__etc__ShipBuilder__) */

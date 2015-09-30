@@ -9,6 +9,7 @@
 #include "gclass.h"
 #include <fstream>
 #include <iostream>
+#include "GLOBAL_CONST.h"
 
 using namespace std;
 
@@ -92,7 +93,7 @@ Gclass* Gclass::empty()
     result->length = 1;
     result->internalArray = new uint32_t[result->length];
     result->internalArray[0] = 62;
-    result->filename = string("/Users/oleksii_tiurenkov/testoutdir/") + random_string(16);
+    result->filename = string(MAIN_DIR) + random_string(16);
     result->fleetCreate();
     return result;
 }
