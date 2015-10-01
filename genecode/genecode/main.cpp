@@ -55,19 +55,20 @@ void loadAll(Population& all)
 
 int main(int argc, const char * argv[])
 {
-    
+    Population corePopulation;
+    srand((unsigned)time(NULL));
+    //load all
+    loadAll(corePopulation);
+    //if empty add first seed
+    if (corePopulation.empty())
+    {
+        corePopulation.push_back(Gclass::empty());
+    }
     for (int i = 0; i<1000000; i++)
     {
-        Population population;
-        //Init RANDOM
-        srand((unsigned)time(NULL));
-        //load all
-        loadAll(population);
-        //if empty add first seed
-        if (population.empty())
-        {
-            population.push_back(Gclass::empty());
-        }
+        Population population(corePopulation);
+        corePopulation.clear();
+
         for_each(population.begin(), population.end(), [&population](Gclass* gene){
             for_each(population.begin(), population.end(), [gene](Gclass* guest){
                 if(gene != guest)
@@ -80,25 +81,28 @@ int main(int argc, const char * argv[])
             
             return a->betterThan(b);
         });
-    //    auto mediana = std::min(population.begin()+1000, population.end());
-        for_each(population.begin(),population.size() > MAX_POPULATION ?  population.begin() + MAX_POPULATION : population.end(), [population](Gclass* gene){
-            gene->save();
+        //make love
+        for_each(population.begin(),population.size() > MAX_POPULATION ?  population.begin() + MAX_POPULATION : population.end(), [&corePopulation,&population](Gclass* gene){
             auto rand = std::rand() % population.size();
             auto newgene = gene->crossover(population.at(rand));
-            newgene->save();
+            corePopulation.push_back(newgene);
+            gene->mutation();
+            corePopulation.push_back(gene);
         });
         //kill the others
         for_each(population.begin() + (population.size() > MAX_POPULATION ? MAX_POPULATION : population.size()),population.end(), [](Gclass* gene)
         {
             gene->deleteGene();
+            delete gene;
         });
-        //clear memory
-        for (auto it:population)
-        {
-            delete it;
-        }
         population.clear();
         cout << "Generation:" << i << endl;
+
+            
     }
+    for_each(corePopulation.begin(), corePopulation.end(), [](Gclass* g){
+        g->save();
+    });
+
     return 0;
 }

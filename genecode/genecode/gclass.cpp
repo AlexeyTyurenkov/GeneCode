@@ -70,7 +70,7 @@ bool Gclass::save()
     ofstream outfile(filename, ios_base::binary|ios_base::out|ios::trunc);
     if (outfile.is_open())
     {
-        mutation();
+//        mutation();
         outfile.write(reinterpret_cast<char*>(internalArray), length * sizeof(uint32_t));
         outfile.close();
         result = true;
@@ -83,7 +83,7 @@ bool Gclass::save()
     return result;
 }
 
-inline void Gclass::mutation()
+void Gclass::mutation()
 {
     for (int i = 0; i < length; i++)
     {
@@ -156,12 +156,17 @@ Gclass* Gclass::crossover(Gclass *gene)
 
 void Gclass::deleteGene()
 {
-    if( remove(filename.c_str()) != 0 )
-        perror( "Error deleting file" );
+    remove(filename.c_str());
+//    if( remove(filename.c_str()) != 0 )
+//        perror( "Error deleting file" );
     delete [] internalArray;
 }
 
 void Gclass::compare(Gclass* other)
 {
-    fleetCreate() > other->fleetCreate()?score++:other->score++;
+    auto myFleet = fleetCreate();
+    auto otherFleet = other->fleetCreate();
+    myFleet->wins(otherFleet)?score++:other->score++;
+    delete myFleet;
+    delete otherFleet;
 }

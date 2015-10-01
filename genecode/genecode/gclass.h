@@ -21,9 +21,9 @@ class Gclass
     uint32_t* internalArray;
     std::string filename;
     Fleet* fleetCreate() const;
-    inline void mutation();
     int score = 0;
 public:
+    void mutation();
     void deleteGene();
     bool save();
     Gclass* crossover(Gclass* gene);

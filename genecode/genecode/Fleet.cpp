@@ -65,7 +65,7 @@ Fleet::Fleet(uint32_t* array, size_t length)
         }
     }
     ships.push_back(builder->getShip());
-
+    delete builder;
 }
 
 
