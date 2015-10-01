@@ -17,12 +17,10 @@
 class Fleet
 {
 private:
-    void parse(uint32_t* array, size_t length);
     std::vector<Ship> ships;
-    uint64_t score;
 public:
     Fleet(uint32_t* array,size_t length);
-    uint64_t fitness();
+    bool wins(Fleet* other);
 };
 
 

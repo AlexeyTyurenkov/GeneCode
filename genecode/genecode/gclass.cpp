@@ -70,6 +70,7 @@ bool Gclass::save()
     ofstream outfile(filename, ios_base::binary|ios_base::out|ios::trunc);
     if (outfile.is_open())
     {
+        mutation();
         outfile.write(reinterpret_cast<char*>(internalArray), length * sizeof(uint32_t));
         outfile.close();
         result = true;
@@ -82,9 +83,21 @@ bool Gclass::save()
     return result;
 }
 
-void Gclass::fleetCreate()
+inline void Gclass::mutation()
 {
-    this->fleet = new Fleet(internalArray, length);
+    for (int i = 0; i < length; i++)
+    {
+        if (RADIATION > (rand()%MAX_SCALE))
+        {
+            internalArray[i]^= 1 << rand()%32;
+        }
+    }
+}
+
+
+Fleet* Gclass::fleetCreate() const
+{
+    return new Fleet(internalArray, length);
 }
 
 Gclass* Gclass::empty()
@@ -92,13 +105,63 @@ Gclass* Gclass::empty()
     Gclass* result = new Gclass;
     result->length = 1;
     result->internalArray = new uint32_t[result->length];
-    result->internalArray[0] = 62;
+    result->internalArray[0] = 0;
     result->filename = string(MAIN_DIR) + random_string(16);
-    //result->fleetCreate();
     return result;
 }
 
 bool Gclass::betterThan(const Gclass *other) const
 {
-    return true;
+    return length > other->length;
+}
+
+size_t randomMedium(size_t length)
+{
+    long result = length/2 + (RADIATION > (rand()%MAX_SCALE)?rand()%3 -1 :0 );
+    result = result > 0? result:0;
+    result = length < result? length: result;
+    return result;
+}
+
+Gclass* Gclass::crossover(Gclass *gene)
+{
+    size_t myGenes = randomMedium(length);
+    size_t theirsGenes = randomMedium(gene->length);
+    Gclass* result = new Gclass;
+    result->length = myGenes + theirsGenes;
+    result->internalArray = new uint32_t[result->length];
+    if (rand()%2)
+    {
+        if(myGenes) memcpy(result->internalArray, internalArray,  myGenes);
+        if(theirsGenes) memcpy(result->internalArray+myGenes, gene->internalArray + gene->length - theirsGenes - 1, theirsGenes);
+    }
+    else
+    {
+        if(theirsGenes) memcpy(result->internalArray, gene->internalArray,  theirsGenes);
+        if(myGenes) memcpy(result->internalArray+theirsGenes, internalArray + length - myGenes - 1, myGenes);
+    }
+    //insert random gene
+    if (RADIATION > (rand()%MAX_SCALE))
+    {
+        result->length++;
+        auto rs = new uint32_t[result->length];
+        memcpy(rs, result->internalArray, result->length - 1);
+        rs[result->length - 1] = 0;
+        delete [] result->internalArray;
+        result->internalArray = rs;
+    }
+    result->filename = string(MAIN_DIR) + random_string(16);
+    return result;
+}
+
+void Gclass::deleteGene()
+{
+    if( remove(filename.c_str()) != 0 )
+        perror( "Error deleting file" );
+    delete [] internalArray;
+}
+
+void Gclass::compare(Gclass* other)
+{
+    fleetCreate() > other->fleetCreate()?score++:other->score++;
 }

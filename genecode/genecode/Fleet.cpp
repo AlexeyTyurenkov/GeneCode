@@ -37,18 +37,6 @@ UnitType unittypefromCode(uint32_t T)
 
 Fleet::Fleet(uint32_t* array, size_t length)
 {
-    parse(array, length);
-    score = 0;
-}
-
-uint64_t Fleet::fitness()
-{
-    return score*10;
-}
-
-
-void Fleet::parse(uint32_t* array, size_t length)
-{
     ShipBuilder* builder = new ShipBuilder;
     for (int i=0; i < length; i++)
     {
@@ -77,7 +65,14 @@ void Fleet::parse(uint32_t* array, size_t length)
         }
     }
     ships.push_back(builder->getShip());
-    
+
+}
+
+
+
+bool Fleet::wins(Fleet *other)
+{
+    return ships.size() > other->ships.size();
 }
 
 

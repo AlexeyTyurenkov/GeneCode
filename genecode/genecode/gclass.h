@@ -20,15 +20,20 @@ class Gclass
     size_t length;
     uint32_t* internalArray;
     std::string filename;
-    Fleet* fleet;
-    void fleetCreate();
-    
+    Fleet* fleetCreate() const;
+    inline void mutation();
+    int score = 0;
 public:
+    void deleteGene();
     bool save();
+    Gclass* crossover(Gclass* gene);
     uint64_t fitness();
     bool betterThan(const Gclass* other) const;
     
+    
+    void compare(Gclass* other);
     static Gclass* loadFromFile(std::string filename);
     static Gclass* empty();
+    
 };
 #endif /* defined(__etc__gclass__) */
