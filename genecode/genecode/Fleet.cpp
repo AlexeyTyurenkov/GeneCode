@@ -56,7 +56,7 @@ void Fleet::parse(uint32_t* array, size_t length)
         UnitType type = unittypefromCode(unitcode);
         if (type == kUnknown) continue;
         auto value = unitcode & 0xFF;
-        switch (unitcode)
+        switch (type)
         {
             case kShield:
                 builder->addShield(value);
@@ -65,11 +65,14 @@ void Fleet::parse(uint32_t* array, size_t length)
                 builder->addEngine(value);
                 break;
             case kStopStart:
+            {
                 ships.push_back(builder->getShip());
                 delete builder;
                 builder = new ShipBuilder;
                 break;
+            }
             default:
+                continue;
                 break;
         }
     }

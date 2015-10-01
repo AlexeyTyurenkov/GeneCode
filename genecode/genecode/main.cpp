@@ -13,10 +13,18 @@
 #include <vector>
 #include <algorithm>    // std::for_each
 #include "GLOBAL_CONST.h"
+#include <queue>
+
 
 using namespace std;
 
-
+struct compare
+{
+    bool operator()(const Gclass* l, const Gclass* r)
+    {
+        return l->betterThan(r);
+    }
+};
 
 
 bool isPrefix(string first, string second)
@@ -50,14 +58,33 @@ void loadAll(std::vector<Gclass*>& all)
 }
 
 
+void loadAll(std::priority_queue<Gclass*>& all)
+{
+    string dirname = MAIN_DIR;
+    DIR* dirp = opendir(dirname.c_str());
+    while (auto dp = readdir(dirp))
+    {
+        if (dp->d_type == DT_REG && !isPrefix(".", dp->d_name))
+        {
+            cout << dp->d_name << endl;
+            if (auto fall = Gclass::loadFromFile(dirname + dp->d_name))
+            {
+                all.push(fall);
+            }
+        }
+    }
+    (void)closedir(dirp);
+}
+
 int main(int argc, const char * argv[])
 {
     std::vector<Gclass*> allget;
-    
+    std::priority_queue<Gclass*, vector<Gclass*>, compare> population;
     //Init RANDOM
     srand((unsigned)time(NULL));
     //load all
     loadAll(allget);
+    load
     //if empty add first seed
     if (allget.empty())
     {

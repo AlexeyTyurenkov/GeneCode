@@ -57,7 +57,7 @@ Gclass* Gclass::loadFromFile(std::string filename)
         //save file name
         result->filename = filename;
         //create fleet
-        result->fleetCreate();
+        //result->fleetCreate();
 
         delete [] charArray;
     }
@@ -94,7 +94,11 @@ Gclass* Gclass::empty()
     result->internalArray = new uint32_t[result->length];
     result->internalArray[0] = 62;
     result->filename = string(MAIN_DIR) + random_string(16);
-    result->fleetCreate();
+    //result->fleetCreate();
     return result;
 }
 
+bool Gclass::betterThan(const Gclass *other) const
+{
+    return true;
+}

@@ -63,6 +63,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D994B8101BBDAC6F0056DC35 /* Genetic */ = {
+			isa = PBXGroup;
+			children = (
+				D9B380551BBC7A21001BF29A /* gclass.cpp */,
+				D9B380561BBC7A21001BF29A /* gclass.h */,
+			);
+			name = Genetic;
+			sourceTree = "<group>";
+		};
 		D9B3803D1BBC78CF001BF29A = {
 			isa = PBXGroup;
 			children = (
@@ -75,8 +84,7 @@
 				D9B380521BBC7A21001BF29A /* Fleet.h */,
 				D9B380531BBC7A21001BF29A /* Shield.h */,
 				D9B380541BBC7A21001BF29A /* Shield.cpp */,
-				D9B380551BBC7A21001BF29A /* gclass.cpp */,
-				D9B380561BBC7A21001BF29A /* gclass.h */,
+				D994B8101BBDAC6F0056DC35 /* Genetic */,
 				D9B380571BBC7A21001BF29A /* Unit.h */,
 				D9B380581BBC7A21001BF29A /* Unit.cpp */,
 				D9B380591BBC7A21001BF29A /* ShipBuilder.cpp */,

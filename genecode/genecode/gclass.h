@@ -26,7 +26,7 @@ class Gclass
 public:
     bool save();
     uint64_t fitness();
-    
+    bool betterThan(const Gclass* other) const;
     
     static Gclass* loadFromFile(std::string filename);
     static Gclass* empty();
