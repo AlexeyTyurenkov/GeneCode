@@ -118,7 +118,8 @@ bool Fleet::wins(Fleet *other)
             shoot.fire();
         }
         
-        
+        compress();
+        other->compress();
         
         IcanFire = canFire();
         TheyCanFire = other->canFire();
@@ -184,5 +185,5 @@ Ship* Fleet::randomShip()
 
 void Fleet::compress()
 {
-
+    ships.erase(std::remove_if(ships.begin(), ships.end(), Ship::shouldRemove),ships.end());
 }

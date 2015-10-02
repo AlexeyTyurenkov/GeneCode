@@ -14,15 +14,16 @@
 #include "GLOBAL_CONST.h"
 
 
-class Gun : public Unit, public Weapon{
+class Gun : public Weapon{
     
-    
+    virtual bool isEmpty();
 public:
-    Gun(unsigned value):Unit(value){};
+    Gun(unsigned value):Weapon(value){};
     virtual bool canFire() const;
     
     virtual void fire(std::vector<Shoot>& salvo, Fleet* enemy);
     virtual void hit(unsigned int damage);
+    
 
 };
 #endif /* defined(__genecode__Gun__) */

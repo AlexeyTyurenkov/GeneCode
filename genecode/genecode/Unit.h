@@ -21,7 +21,7 @@ public:
     Unit(unsigned value):value(value){};
     virtual ~Unit();
     virtual void hit(unsigned damage) = 0;
-    static bool shouldRemove(Unit* theElement);
+    virtual bool shouldRemove();
 };
 
 #endif /* defined(__etc__Unit__) */

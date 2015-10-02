@@ -11,6 +11,7 @@
 
 #include <stdio.h>
 #include <vector>
+
 #include "GLOBAL_CONST.h"
 
 class Ship
@@ -25,5 +26,7 @@ public:
     void fire(std::vector<Shoot>&salvo, Fleet *enemy);
     void compress();
     bool canFire();
+    static bool shouldRemove(Ship*);
+    
 };
 #endif /* defined(__etc__Ship__) */

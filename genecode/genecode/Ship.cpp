@@ -44,6 +44,16 @@ void Ship::fire(std::vector<Shoot>&salvo, Fleet *enemy)
 
 void Ship::compress()
 {
-    std::remove_if(units.begin(), units.end(), Unit::shouldRemove);
-    units.shrink_to_fit();
+    weapons.erase(std::remove_if(weapons.begin(), weapons.end(), [](Weapon* weapon){ return weapon->shouldRemove();}),weapons.end());
+    units.erase(std::remove_if(units.begin(), units.end(), [](Unit* unit){
+        bool result = unit->shouldRemove();
+        if (result) delete unit;
+        return result;
+    }),units.end());
+}
+
+bool Ship::shouldRemove(Ship * it)
+{
+    it->compress();
+    return it->units.size() == 0;
 }

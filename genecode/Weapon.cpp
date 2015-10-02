@@ -7,3 +7,8 @@
 //
 
 #include "Weapon.hpp"
+
+bool Weapon::canRemove(Weapon* weapon)
+{
+    return weapon->isEmpty();
+}

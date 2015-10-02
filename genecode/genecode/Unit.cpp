@@ -13,12 +13,7 @@ Unit::~Unit()
     
 }
 
- bool Unit::shouldRemove( Unit* unit )
+ bool Unit::shouldRemove()
 {
-    if (unit->value)
-    {
-        return false;
-    }
-    delete unit;
-    return true;
+    return value == 0;
 }
