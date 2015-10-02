@@ -8,6 +8,7 @@
 
 #include "Ship.h"
 #include <cstdlib>
+#include <algorithm>
 
 Ship::~Ship()
 {
@@ -41,3 +42,8 @@ void Ship::fire(std::vector<Shoot>&salvo, Fleet *enemy)
     }
 }
 
+void Ship::compress()
+{
+    std::remove_if(units.begin(), units.end(), Unit::shouldRemove);
+    units.shrink_to_fit();
+}

@@ -181,3 +181,8 @@ Ship* Fleet::randomShip()
     }
     return result;
 }
+
+void Fleet::compress()
+{
+
+}

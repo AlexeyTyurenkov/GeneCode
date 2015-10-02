@@ -25,6 +25,7 @@ private:
     int quality = 0;
     bool canFire();
     void salvo(std::vector<Shoot>& salvo, Fleet* enemy);
+    void compress();
 public:
     Fleet(std::vector<shima_t>);
     bool wins(Fleet* other);

@@ -23,6 +23,7 @@ public:
     ~Ship();
     void hit(unsigned value);
     void fire(std::vector<Shoot>&salvo, Fleet *enemy);
+    void compress();
     bool canFire();
 };
 #endif /* defined(__etc__Ship__) */
