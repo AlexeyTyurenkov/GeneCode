@@ -34,15 +34,22 @@ UnitType unittypefromCode(uint32_t T)
     return result;
 }
 
-
-Fleet::Fleet(uint32_t* array, size_t length)
+#pragma mark - Initialization
+Fleet::Fleet(std::vector<shima_t> vector)
 {
+    quality = 0;
+    bool hasRealShips = false;
     ShipBuilder* builder = new ShipBuilder;
-    for (int i=0; i < length; i++)
+    for (auto unitcode : vector)
     {
-        auto unitcode = array[i];
         UnitType type = unittypefromCode(unitcode);
-        if (type == kUnknown) continue;
+        if (type == kUnknown)
+        {
+            quality--;
+            continue;
+        }
+        quality++;
+        hasRealShips = true;
         auto value = unitcode & 0xFF;
         switch (type)
         {
@@ -64,22 +71,46 @@ Fleet::Fleet(uint32_t* array, size_t length)
                 break;
         }
     }
-    ships.push_back(builder->getShip());
+    if (hasRealShips) ships.push_back(builder->getShip());
     delete builder;
 }
 
 
 
-bool Fleet::wins(Fleet *other)
-{
-    return ships.size() > other->ships.size();
-}
 
+
+#pragma mark - Destructors
 Fleet::~Fleet()
 {
     for(auto ship: ships)
     {
         delete ship;
     }
+}
+
+
+#pragma mark - Fitness point
+bool Fleet::wins(Fleet *other)
+{
+    bool result = false;
+    while (canFire() && other->canFire())
+    {
+        
+    }
+
+    if (ships.size() == other->ships.size())
+    {
+        result = quality > other->quality;
+    }
+    else
+    {
+        result = ships.size() > other->ships.size();
+    }
+    return result;
+}
+
+bool Fleet::canFire()
+{
+    return false;
 }
 

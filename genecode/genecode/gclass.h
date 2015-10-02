@@ -13,26 +13,33 @@
 #include <cstdlib>
 #include <string>
 #include "Fleet.h"
+#include <vector>
+#include "GLOBAL_CONST.h"
+
 
 
 class Gclass
 {
-    size_t length;
-    uint32_t* internalArray;
+    std::vector<shima_t>  internalArray;
     std::string filename;
     Fleet* fleetCreate() const;
     int score = 0;
 public:
+    //genetic operators
     void mutation();
+
+    Gclass* crossover(Gclass* gene);
+
+    //Save to disk delete from disk
+    static Gclass* loadFromFile(std::string filename);
     void deleteGene();
     bool save();
-    Gclass* crossover(Gclass* gene);
-    uint64_t fitness();
+    
+    //Fitness operator
     bool betterThan(const Gclass* other) const;
-    
-    
     void compare(Gclass* other);
-    static Gclass* loadFromFile(std::string filename);
+
+    //Create new
     static Gclass* empty();
     
 };

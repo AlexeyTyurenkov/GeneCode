@@ -42,24 +42,20 @@ Gclass* Gclass::loadFromFile(std::string filename)
         //get file size
         size_t buffersize =infile.tellg();
         //create buffer
-        char* charArray = new char[buffersize];
+        char* bufferArray = new char[buffersize];
         //return to file start
         infile.seekg(ios::beg);
         //read all from file
-        infile.read(charArray, buffersize);
+        infile.read(bufferArray, buffersize);
         //close file
         infile.close();
         result = new Gclass;
-        result->length = buffersize/sizeof(uint32_t);
-        result->internalArray = new uint32_t[result->length];
-        //copy array to object
-        memcpy(result->internalArray, charArray, buffersize);
+        size_t bufferlength = buffersize/sizeof(shima_t);
+        shima_t* shimaBuffer = reinterpret_cast<shima_t*>(bufferArray);
+        result->internalArray.assign(shimaBuffer, shimaBuffer + bufferlength);
         //save file name
         result->filename = filename;
-        //create fleet
-        //result->fleetCreate();
-
-        delete [] charArray;
+        delete [] bufferArray;
     }
     return result;
 }
@@ -70,8 +66,9 @@ bool Gclass::save()
     ofstream outfile(filename, ios_base::binary|ios_base::out|ios::trunc);
     if (outfile.is_open())
     {
-//        mutation();
-        outfile.write(reinterpret_cast<char*>(internalArray), length * sizeof(uint32_t));
+        shima_t* shimaBuffer = new shima_t[internalArray.size()];
+        std::copy(internalArray.begin(),internalArray.end(),shimaBuffer);
+        outfile.write(reinterpret_cast<char*>(shimaBuffer), internalArray.size() * sizeof(shima_t));
         outfile.close();
         result = true;
     }
@@ -85,7 +82,7 @@ bool Gclass::save()
 
 void Gclass::mutation()
 {
-    for (int i = 0; i < length; i++)
+    for (int i = 0; i < internalArray.size(); i++)
     {
         if (RADIATION > (rand()%MAX_SCALE))
         {
@@ -97,22 +94,20 @@ void Gclass::mutation()
 
 Fleet* Gclass::fleetCreate() const
 {
-    return new Fleet(internalArray, length);
+    return new Fleet(internalArray);
 }
 
 Gclass* Gclass::empty()
 {
     Gclass* result = new Gclass;
-    result->length = 1;
-    result->internalArray = new uint32_t[result->length];
-    result->internalArray[0] = 0;
+    result->internalArray.push_back(0);
     result->filename = string(MAIN_DIR) + random_string(16);
     return result;
 }
 
 bool Gclass::betterThan(const Gclass *other) const
 {
-    return length > other->length;
+    return score > other->score;
 }
 
 size_t randomMedium(size_t length)
@@ -125,30 +120,27 @@ size_t randomMedium(size_t length)
 
 Gclass* Gclass::crossover(Gclass *gene)
 {
-    size_t myGenes = randomMedium(length);
-    size_t theirsGenes = randomMedium(gene->length);
+    size_t myGenes = randomMedium(internalArray.size());
+    size_t theirsGenes = randomMedium(gene->internalArray.size());
     Gclass* result = new Gclass;
-    result->length = myGenes + theirsGenes;
-    result->internalArray = new uint32_t[result->length];
     if (rand()%2)
     {
-        if(myGenes) memcpy(result->internalArray, internalArray,  myGenes);
-        if(theirsGenes) memcpy(result->internalArray+myGenes, gene->internalArray + gene->length - theirsGenes - 1, theirsGenes);
+        for(auto it = internalArray.begin(); it != internalArray.begin()+myGenes && it != internalArray.end(); it++) result->internalArray.push_back(*it);
+        for(auto it = gene->internalArray.end() - theirsGenes; it != gene->internalArray.end(); it++) result->internalArray.push_back(*it);
     }
     else
     {
-        if(theirsGenes) memcpy(result->internalArray, gene->internalArray,  theirsGenes);
-        if(myGenes) memcpy(result->internalArray+theirsGenes, internalArray + length - myGenes - 1, myGenes);
+        for(auto it = gene->internalArray.begin(); it != gene->internalArray.begin()+theirsGenes && it != gene->internalArray.end(); it++)
+            result->internalArray.push_back(*it);
+        for(auto it = internalArray.end() - myGenes; it != internalArray.end(); it++) result->internalArray.push_back(*it);
     }
     //insert random gene
     if (RADIATION > (rand()%MAX_SCALE))
     {
-        result->length++;
-        auto rs = new uint32_t[result->length];
-        memcpy(rs, result->internalArray, result->length - 1);
-        rs[result->length - 1] = 0;
-        delete [] result->internalArray;
-        result->internalArray = rs;
+        size_t position = internalArray.size() != 0 ?rand()%internalArray.size() : 0;
+        shima_t shima   = rand();
+        
+        internalArray.insert(internalArray.begin() + position,shima);
     }
     result->filename = string(MAIN_DIR) + random_string(16);
     return result;
@@ -157,9 +149,6 @@ Gclass* Gclass::crossover(Gclass *gene)
 void Gclass::deleteGene()
 {
     remove(filename.c_str());
-//    if( remove(filename.c_str()) != 0 )
-//        perror( "Error deleting file" );
-    delete [] internalArray;
 }
 
 void Gclass::compare(Gclass* other)

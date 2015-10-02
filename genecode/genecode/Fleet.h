@@ -12,14 +12,16 @@
 #include <stdio.h>
 #include <vector>
 #include "Ship.h"
-
+#include "GLOBAL_CONST.h"
 
 class Fleet
 {
 private:
     std::vector<Ship*> ships;
+    int quality = 0;
+    bool canFire();
 public:
-    Fleet(uint32_t* array,size_t length);
+    Fleet(std::vector<shima_t>);
     bool wins(Fleet* other);
     ~Fleet();
 };

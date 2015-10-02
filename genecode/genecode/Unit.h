@@ -19,6 +19,7 @@ protected:
 public:
     virtual bool canFire() const = 0;
     Unit(unsigned value):value(value){};
+    virtual ~Unit();
 };
 
 #endif /* defined(__etc__Unit__) */
