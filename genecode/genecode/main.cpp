@@ -64,7 +64,7 @@ int main(int argc, const char * argv[])
     {
         corePopulation.push_back(Gclass::empty());
     }
-    for (int i = 0; i<1000000; i++)
+    for (int i = 0; i<10000; i++)
     {
         Population population(corePopulation);
         corePopulation.clear();

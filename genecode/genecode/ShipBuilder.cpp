@@ -27,8 +27,7 @@ void ShipBuilder::addGun(unsigned int value)
     units.push_back(new Gun(value));
 }
 
-Ship ShipBuilder::getShip()
+Ship* ShipBuilder::getShip()
 {
-    Ship s(units);
-    return s;
+    return new Ship(units);
 }

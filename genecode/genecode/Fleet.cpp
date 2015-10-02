@@ -75,4 +75,11 @@ bool Fleet::wins(Fleet *other)
     return ships.size() > other->ships.size();
 }
 
+Fleet::~Fleet()
+{
+    for(auto ship: ships)
+    {
+        delete ship;
+    }
+}
 

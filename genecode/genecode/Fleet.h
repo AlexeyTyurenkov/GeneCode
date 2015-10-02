@@ -17,10 +17,11 @@
 class Fleet
 {
 private:
-    std::vector<Ship> ships;
+    std::vector<Ship*> ships;
 public:
     Fleet(uint32_t* array,size_t length);
     bool wins(Fleet* other);
+    ~Fleet();
 };
 
 

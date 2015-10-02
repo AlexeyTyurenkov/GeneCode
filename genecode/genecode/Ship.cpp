@@ -7,3 +7,13 @@
 //
 
 #include "Ship.h"
+
+
+Ship::~Ship()
+{
+    for (auto unit : units)
+    {
+        delete unit;
+    }
+    units.clear();
+}

@@ -18,5 +18,6 @@ private:
     std::vector<Unit*> units;
 public:
     Ship(std::vector<Unit*> vector):units(vector){};
+    ~Ship();
 };
 #endif /* defined(__etc__Ship__) */
