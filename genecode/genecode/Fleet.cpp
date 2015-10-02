@@ -8,6 +8,8 @@
 
 #include "Fleet.h"
 #include "ShipBuilder.h"
+#include "Shoot.h"
+
 
 typedef enum {
     kStopStart = 0,
@@ -15,6 +17,7 @@ typedef enum {
     kEngine  = 2,
     kUnknown = 256
 } UnitType;
+
 
 
 UnitType unittypefromCode(uint32_t T)
@@ -93,12 +96,32 @@ Fleet::~Fleet()
 bool Fleet::wins(Fleet *other)
 {
     bool result = false;
-    while (canFire() && other->canFire())
+    
+    bool IcanFire = canFire();
+    bool TheyCanFire = other->canFire();
+    std::vector<Shoot>
+    while (IcanFire && TheyCanFire)
     {
-        
+        for (auto firer: ships)
+        {
+            if (canFire())
+            {
+                
+            }
+        }
+        IcanFire = canFire();
+        TheyCanFire = other->canFire();
     }
-
-    if (ships.size() == other->ships.size())
+    
+    if (IcanFire && !TheyCanFire)
+    {
+        result = true;
+    }
+    else if (TheyCanFire && !IcanFire)
+    {
+        result = false;
+    }
+    else if (ships.size() == other->ships.size())
     {
         result = quality > other->quality;
     }
@@ -111,6 +134,16 @@ bool Fleet::wins(Fleet *other)
 
 bool Fleet::canFire()
 {
-    return false;
+    bool result = false;
+    for (auto ship: ships)
+    {
+        result = ship->canFire();
+        if (result) break;
+    }
+    return result;
 }
 
+size_t Fleet::visibleCount()
+{
+    return ships.size();
+}

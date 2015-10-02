@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D95EC4C71BBEA84400E49DF1 /* Shoot.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D95EC4C51BBEA84400E49DF1 /* Shoot.cpp */; settings = {ASSET_TAGS = (); }; };
 		D9B3804A1BBC78CF001BF29A /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D9B380491BBC78CF001BF29A /* main.cpp */; };
 		D9B3805C1BBC7A21001BF29A /* Fleet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D9B380501BBC7A21001BF29A /* Fleet.cpp */; };
 		D9B3805D1BBC7A21001BF29A /* Shield.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D9B380541BBC7A21001BF29A /* Shield.cpp */; };
@@ -31,6 +32,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		D95EC4C51BBEA84400E49DF1 /* Shoot.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Shoot.cpp; sourceTree = "<group>"; };
+		D95EC4C61BBEA84400E49DF1 /* Shoot.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Shoot.hpp; sourceTree = "<group>"; };
 		D9B380461BBC78CF001BF29A /* genecode */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = genecode; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9B380491BBC78CF001BF29A /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		D9B380501BBC7A21001BF29A /* Fleet.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Fleet.cpp; path = genecode/Fleet.cpp; sourceTree = "<group>"; };
@@ -81,6 +84,8 @@
 				D9B380651BBC872A001BF29A /* Gun.h */,
 				D9B380621BBC7A78001BF29A /* GLOBAL_CONST.h */,
 				D9B380501BBC7A21001BF29A /* Fleet.cpp */,
+				D95EC4C51BBEA84400E49DF1 /* Shoot.cpp */,
+				D95EC4C61BBEA84400E49DF1 /* Shoot.hpp */,
 				D9B380521BBC7A21001BF29A /* Fleet.h */,
 				D9B380531BBC7A21001BF29A /* Shield.h */,
 				D9B380541BBC7A21001BF29A /* Shield.cpp */,
@@ -175,6 +180,7 @@
 				D9B3805D1BBC7A21001BF29A /* Shield.cpp in Sources */,
 				D9B3804A1BBC78CF001BF29A /* main.cpp in Sources */,
 				D9B3805F1BBC7A21001BF29A /* Unit.cpp in Sources */,
+				D95EC4C71BBEA84400E49DF1 /* Shoot.cpp in Sources */,
 				D9B380691BBC87AC001BF29A /* Engine.cpp in Sources */,
 				D9B380611BBC7A21001BF29A /* Ship.cpp in Sources */,
 			);

@@ -7,7 +7,7 @@
 //
 
 #include "Ship.h"
-
+#include <cstdlib>
 
 Ship::~Ship()
 {
@@ -17,3 +17,40 @@ Ship::~Ship()
     }
     units.clear();
 }
+
+
+bool Ship::canFire()
+{
+    bool result = false;
+    for(auto unit:units)
+    {
+        result = unit->canFire();
+        if (result) break;
+    }
+    return result;
+}
+
+Shoot Ship::hit(unsigned int value)
+{
+    Shoot c;
+    return c;
+}
+
+std::vector<Shoot> Ship::fire(Fleet *enemy)
+{
+    std::vector<Shoot> salvo;
+    if (enemy->visibleCount())
+    {
+        for (auto unit : units)
+        {
+            if (unit->canFire())
+            {
+                salvo.push_back(unit->fire());
+                
+            }
+        }
+    }
+
+    return salvo;
+}
+

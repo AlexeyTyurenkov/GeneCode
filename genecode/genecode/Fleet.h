@@ -24,6 +24,8 @@ public:
     Fleet(std::vector<shima_t>);
     bool wins(Fleet* other);
     ~Fleet();
+    
+    size_t visibleCount();
 };
 
 
