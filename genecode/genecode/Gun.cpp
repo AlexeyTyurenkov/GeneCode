@@ -25,14 +25,7 @@ void Gun::fire(std::vector<Shoot> &salvo, Fleet *enemy)
 
 void Gun::hit(unsigned int damage)
 {
-    if (damage <=  value)
-    {
-        value-=damage;
-    }
-    else
-    {
-        value = 0;
-    }
+    value = 0;
 }
 
 bool Gun::isEmpty()

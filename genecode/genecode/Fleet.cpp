@@ -82,6 +82,7 @@ Fleet::Fleet(std::vector<shima_t> vector)
     }
     if (hasRealShips) ships.push_back(builder->getShip());
     delete builder;
+    this->compress();
 }
 
 

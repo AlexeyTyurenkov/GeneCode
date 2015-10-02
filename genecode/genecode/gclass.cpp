@@ -155,6 +155,7 @@ void Gclass::compare(Gclass* other)
 {
     auto myFleet = fleetCreate();
     auto otherFleet = other->fleetCreate();
+
     myFleet->wins(otherFleet)?score++:other->score++;
     delete myFleet;
     delete otherFleet;
