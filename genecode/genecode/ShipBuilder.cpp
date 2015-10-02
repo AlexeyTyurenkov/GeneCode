@@ -24,10 +24,12 @@ void ShipBuilder::addShield(unsigned int value)
 
 void ShipBuilder::addGun(unsigned int value)
 {
-    units.push_back(new Gun(value));
+    Gun* gun = new Gun(value);
+    units.push_back(gun);
+    weapon.push_back(gun);
 }
 
 Ship* ShipBuilder::getShip()
 {
-    return new Ship(units);
+    return new Ship(units,weapon);
 }

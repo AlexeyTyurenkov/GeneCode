@@ -11,11 +11,16 @@
 
 #include <stdio.h>
 #include "Unit.h"
-class Gun : public Unit{
+#include "Weapon.hpp"
+
+class Gun : public Unit, public Weapon{
     
     
 public:
     Gun(unsigned value):Unit(value){};
     virtual bool canFire() const;
+    
+    virtual void fire(std::vector<Shoot>& salvo, Fleet* enemy);
+
 };
 #endif /* defined(__genecode__Gun__) */

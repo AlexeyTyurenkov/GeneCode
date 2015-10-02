@@ -15,6 +15,8 @@ typedef enum {
     kStopStart = 0,
     kShield  = 1,
     kEngine  = 2,
+    kGun     = 3,
+    
     kUnknown = 256
 } UnitType;
 
@@ -61,6 +63,9 @@ Fleet::Fleet(std::vector<shima_t> vector)
                 break;
             case kEngine:
                 builder->addEngine(value);
+                break;
+            case kGun:
+                builder->addGun(value);
                 break;
             case kStopStart:
             {

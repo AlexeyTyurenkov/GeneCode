@@ -10,5 +10,10 @@
 
 bool Gun::canFire() const
 {
-    return false;
+    return true;
+}
+
+void Gun::fire(std::vector<Shoot> &salvo, Fleet *enemy)
+{
+    
 }

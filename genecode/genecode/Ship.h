@@ -14,13 +14,15 @@
 #include "Unit.h"
 #include "Shoot.hpp"
 #include "Fleet.h"
+#include "Weapon.hpp"
 
 class Ship
 {
 private:
     std::vector<Unit*> units;
+    std::vector<Weapon*> weapons;
 public:
-    Ship(std::vector<Unit*> vector):units(vector){};
+    Ship(std::vector<Unit*> unit, std::vector<Weapon*> weapon):units(unit), weapons(weapon){};
     ~Ship();
     Shoot hit(unsigned value);
     std::vector<Shoot> fire(Fleet* enemy);
