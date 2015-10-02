@@ -13,3 +13,15 @@ bool Engine::canFire() const
 {
     return false;
 }
+
+void Engine::hit(unsigned int damage)
+{
+    if (damage <=  value)
+    {
+        value-=damage;
+    }
+    else
+    {
+        value = 0;
+    }
+}

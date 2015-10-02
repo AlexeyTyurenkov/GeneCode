@@ -20,6 +20,7 @@ public:
     virtual bool canFire() const = 0;
     Unit(unsigned value):value(value){};
     virtual ~Unit();
+    virtual void hit(unsigned damage) = 0;
 };
 
 #endif /* defined(__etc__Unit__) */

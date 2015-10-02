@@ -10,13 +10,19 @@
 #define Shoot_hpp
 
 #include <stdio.h>
-#include "Ship.h"
+#include "GLOBAL_CONST.h"
+
+class Ship;
+
 class Shoot
 {
     Ship* target;
     unsigned value;
+    bool fired = false;
 public:
-    Shoot(Ship* target, unsigned value):target(target),value(value){};
+    Shoot(Ship* target, unsigned value):target(target),value(value){ fired = false;};
+    bool isFired();
+    void fire();
 };
 
 #endif /* Shoot_hpp */

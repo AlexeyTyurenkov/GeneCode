@@ -13,3 +13,15 @@ bool Shield::canFire() const
 {
     return false;
 }
+
+void Shield::hit(unsigned int damage)
+{
+    if (damage <=  value)
+    {
+        value-=damage;
+    }
+    else
+    {
+        value = 0;
+    }
+}

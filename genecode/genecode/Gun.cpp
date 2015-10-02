@@ -15,5 +15,22 @@ bool Gun::canFire() const
 
 void Gun::fire(std::vector<Shoot> &salvo, Fleet *enemy)
 {
+    if (enemy->visibleCount())
+    {
+        salvo.push_back(Shoot(enemy->randomShip(), value));
+    }
     
+}
+
+
+void Gun::Unit::hit(unsigned int damage)
+{
+    if (damage <=  value)
+    {
+        value-=damage;
+    }
+    else
+    {
+        value = 0;
+    }
 }

@@ -20,6 +20,7 @@ class Engine : public Unit
 public:
     Engine(unsigned value):Unit(value){};
     virtual bool canFire() const;
+    virtual void hit(unsigned int damage);
     
 };
 #endif /* defined(__genecode__Engine__) */

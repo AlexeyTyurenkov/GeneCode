@@ -11,10 +11,7 @@
 
 #include <stdio.h>
 #include <vector>
-#include "Unit.h"
-#include "Shoot.hpp"
-#include "Fleet.h"
-#include "Weapon.hpp"
+#include "GLOBAL_CONST.h"
 
 class Ship
 {
@@ -24,8 +21,8 @@ private:
 public:
     Ship(std::vector<Unit*> unit, std::vector<Weapon*> weapon):units(unit), weapons(weapon){};
     ~Ship();
-    Shoot hit(unsigned value);
-    std::vector<Shoot> fire(Fleet* enemy);
+    void hit(unsigned value);
+    void fire(std::vector<Shoot>&salvo, Fleet *enemy);
     bool canFire();
 };
 #endif /* defined(__etc__Ship__) */

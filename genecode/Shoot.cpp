@@ -7,3 +7,14 @@
 //
 
 #include "Shoot.hpp"
+#include "Ship.h"
+
+bool Shoot::isFired()
+{
+    return fired;
+}
+
+void Shoot::fire()
+{
+    target->hit(value);
+}

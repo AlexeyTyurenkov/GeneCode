@@ -8,8 +8,8 @@
 
 #include "Fleet.h"
 #include "ShipBuilder.h"
-#include "Shoot.h"
-
+#include "Shoot.hpp"
+#include <cstdlib>
 
 typedef enum {
     kStopStart = 0,
@@ -31,6 +31,7 @@ UnitType unittypefromCode(uint32_t T)
         case kStopStart:
         case kShield:
         case kEngine:
+        case kGun:
             result = static_cast<UnitType>(control);
             break;
         default:
@@ -104,16 +105,21 @@ bool Fleet::wins(Fleet *other)
     
     bool IcanFire = canFire();
     bool TheyCanFire = other->canFire();
-    std::vector<Shoot>
+    
     while (IcanFire && TheyCanFire)
     {
-        for (auto firer: ships)
+        std::vector<Shoot> salvo;
+        
+        this->salvo(salvo, other);
+        other->salvo(salvo, this);
+        
+        for (auto shoot: salvo)
         {
-            if (canFire())
-            {
-                
-            }
+            shoot.fire();
         }
+        
+        
+        
         IcanFire = canFire();
         TheyCanFire = other->canFire();
     }
@@ -137,6 +143,18 @@ bool Fleet::wins(Fleet *other)
     return result;
 }
 
+
+void Fleet::salvo(std::vector<Shoot>& salvo, Fleet* enemy)
+{
+    for (auto firer: ships)
+    {
+        if (firer->canFire())
+        {
+            firer->fire(salvo, enemy);
+        }
+    }
+}
+
 bool Fleet::canFire()
 {
     bool result = false;
@@ -151,4 +169,15 @@ bool Fleet::canFire()
 size_t Fleet::visibleCount()
 {
     return ships.size();
+}
+
+Ship* Fleet::randomShip()
+{
+    Ship* result = nullptr;
+    if (ships.size())
+    {
+        size_t randomIndex = rand()%ships.size();
+        result = ships[randomIndex];
+    }
+    return result;
 }

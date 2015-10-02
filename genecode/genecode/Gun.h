@@ -10,8 +10,9 @@
 #define __genecode__Gun__
 
 #include <stdio.h>
-#include "Unit.h"
-#include "Weapon.hpp"
+
+#include "GLOBAL_CONST.h"
+
 
 class Gun : public Unit, public Weapon{
     
@@ -21,6 +22,7 @@ public:
     virtual bool canFire() const;
     
     virtual void fire(std::vector<Shoot>& salvo, Fleet* enemy);
+    virtual void hit(unsigned int damage);
 
 };
 #endif /* defined(__genecode__Gun__) */

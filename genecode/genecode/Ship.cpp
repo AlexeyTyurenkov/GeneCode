@@ -21,36 +21,23 @@ Ship::~Ship()
 
 bool Ship::canFire()
 {
-    bool result = false;
-    for(auto unit:units)
-    {
-        result = unit->canFire();
-        if (result) break;
-    }
-    return result;
+    return weapons.size() > 0;
 }
 
-Shoot Ship::hit(unsigned int value)
+void Ship::hit(unsigned int value)
 {
-    Shoot c;
-    return c;
+    if (units.size())
+    {
+        auto randIndex = rand()%units.size();
+        units[randIndex]->hit(value);
+    }
 }
 
-std::vector<Shoot> Ship::fire(Fleet *enemy)
+void Ship::fire(std::vector<Shoot>&salvo, Fleet *enemy)
 {
-    std::vector<Shoot> salvo;
-    if (enemy->visibleCount())
+    for (auto weapon : weapons)
     {
-        for (auto unit : units)
-        {
-            if (unit->canFire())
-            {
-                salvo.push_back(unit->fire());
-                
-            }
-        }
+        weapon->fire(salvo, enemy);
     }
-
-    return salvo;
 }
 

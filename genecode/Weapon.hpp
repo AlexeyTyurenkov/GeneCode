@@ -12,7 +12,11 @@
 #include <stdio.h>
 
 #include <vector>
-#include "Shoot.hpp"
+#include "GLOBAL_CONST.h"
+
+
+class Fleet;
+class Shoot;
 
 class Weapon {
     
