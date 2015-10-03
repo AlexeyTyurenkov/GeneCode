@@ -96,6 +96,7 @@ Fleet::~Fleet()
     {
         delete ship;
     }
+    ships.clear();
 }
 
 

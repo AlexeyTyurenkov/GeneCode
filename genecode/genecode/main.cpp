@@ -15,6 +15,7 @@
 #include "GLOBAL_CONST.h"
 #include <memory>
 
+
 using namespace std;
 
 
@@ -64,7 +65,7 @@ int main(int argc, const char * argv[])
     {
         corePopulation.push_back(Gclass::empty());
     }
-    for (int i = 0; i<10; i++)
+    for (int i = 0; i<20; i++)
     {
         Population population(corePopulation);
         corePopulation.clear();

@@ -31,5 +31,13 @@ void ShipBuilder::addGun(unsigned int value)
 
 Ship* ShipBuilder::getShip()
 {
-    return new Ship(units,weapon);
+    Ship* ship = new Ship(units,weapon);
+    return ship;
 }
+
+ShipBuilder::~ShipBuilder()
+{
+    units.clear();
+    weapon.clear();
+}
+

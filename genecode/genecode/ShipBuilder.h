@@ -25,6 +25,7 @@ public:
     void addEngine(unsigned value);
     void addGun(unsigned value);
     Ship*  getShip();
+    ~ShipBuilder();
 };
 
 #endif /* defined(__etc__ShipBuilder__) */

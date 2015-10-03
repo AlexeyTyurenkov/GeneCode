@@ -55,5 +55,10 @@ void Ship::compress()
 bool Ship::shouldRemove(Ship * it)
 {
     it->compress();
-    return it->units.size() == 0;
+    bool result = it->units.size() == 0;
+    if (result)
+    {
+        delete it;
+    }
+    return result;
 }

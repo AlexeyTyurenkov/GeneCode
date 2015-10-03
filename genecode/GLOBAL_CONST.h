@@ -17,7 +17,7 @@
 
 #define MAIN_DIR "/Users/alterego4/GeneCode/temp/"
 
-const unsigned int MAX_POPULATION = 100;
+const unsigned int MAX_POPULATION = 200;
 const unsigned int RADIATION      = 1000;//1%
 const unsigned int MAX_SCALE      = 100000;//100%
 
