@@ -10,6 +10,7 @@
 #include "ShipBuilder.h"
 #include "Shoot.hpp"
 #include <cstdlib>
+#include <iostream>
 
 typedef enum {
     kStopStart = 0,
@@ -188,4 +189,18 @@ Ship* Fleet::randomShip()
 void Fleet::compress()
 {
     ships.erase(std::remove_if(ships.begin(), ships.end(), Ship::shouldRemove),ships.end());
+}
+
+
+
+void Fleet::print()
+{
+    if(ships.size())
+    {
+        std::cout << "======= Fleet =======" << std::endl;
+        for(auto sheep: ships)
+        {
+            sheep->print();
+        }
+    }
 }

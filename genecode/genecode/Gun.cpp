@@ -7,6 +7,7 @@
 //
 
 #include "Gun.h"
+#include <iostream>
 
 bool Gun::canFire() const
 {
@@ -23,12 +24,13 @@ void Gun::fire(std::vector<Shoot> &salvo, Fleet *enemy)
 }
 
 
-void Gun::hit(unsigned int damage)
+unsigned Gun::hit(unsigned int damage)
 {
     value = 0;
+    return 0;
 }
 
-bool Gun::isEmpty()
+void Gun::print()
 {
-    return value == 0;
+    std::cout << "Gun:" << value << std::endl;
 }

@@ -104,6 +104,8 @@ int main(int argc, const char * argv[])
     for_each(corePopulation.begin(), corePopulation.end(), [](Gclass* g){
         g->save();
     });
-
+    for_each(corePopulation.begin(), corePopulation.end(), [](Gclass* g){
+        g->print();
+    });
     return 0;
 }

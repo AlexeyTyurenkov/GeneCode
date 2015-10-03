@@ -9,6 +9,7 @@
 #include "Ship.h"
 #include <cstdlib>
 #include <algorithm>
+#include <iostream>
 
 Ship::~Ship()
 {
@@ -30,7 +31,7 @@ void Ship::hit(unsigned int value)
     if (units.size())
     {
         auto randIndex = rand()%units.size();
-        units[randIndex]->hit(value);
+        while(auto damage = units[randIndex]->hit(value)) hit(damage);
     }
 }
 
@@ -61,4 +62,25 @@ bool Ship::shouldRemove(Ship * it)
         delete it;
     }
     return result;
+}
+
+
+void Ship::print()
+{
+    std::cout << "=== Ship => Weight: " << weight() << std::endl;
+    for (auto unit : units)
+    {
+        unit->print();
+    }
+}
+
+uint64_t Ship::weight()
+{
+    uint64_t summ = 0;
+    std::for_each(units.begin(),units.end(),[&summ](Unit* unit){
+        
+        summ += unit->weight();
+        
+    });
+    return summ;
 }

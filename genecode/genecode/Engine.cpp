@@ -14,7 +14,7 @@ bool Engine::canFire() const
     return false;
 }
 
-void Engine::hit(unsigned int damage)
+unsigned Engine::hit(unsigned int damage)
 {
     if (damage <=  value)
     {
@@ -24,4 +24,10 @@ void Engine::hit(unsigned int damage)
     {
         value = 0;
     }
+    return rand()%2;
+}
+
+void Engine::print()
+{
+    std::cout << "Engine:" << value << std::endl;
 }

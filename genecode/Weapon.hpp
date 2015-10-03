@@ -20,7 +20,6 @@ class Shoot;
 
 class Weapon:public Unit {
     
-    virtual bool isEmpty() = 0;
 public:
     Weapon(unsigned value):Unit(value){};
     virtual void fire(std::vector<Shoot>& salvo, Fleet* enemy) = 0;

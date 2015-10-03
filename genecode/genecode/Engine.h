@@ -11,7 +11,7 @@
 
 #include <stdio.h>
 #include "Unit.h"
-
+#include <iostream>
 
 class Engine : public Unit
 {
@@ -20,7 +20,7 @@ class Engine : public Unit
 public:
     Engine(unsigned value):Unit(value){};
     virtual bool canFire() const;
-    virtual void hit(unsigned int damage);
-    
+    virtual unsigned hit(unsigned int damage);
+    virtual void print();
 };
 #endif /* defined(__genecode__Engine__) */

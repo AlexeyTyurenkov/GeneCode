@@ -20,8 +20,10 @@ public:
     virtual bool canFire() const = 0;
     Unit(unsigned value):value(value){};
     virtual ~Unit();
-    virtual void hit(unsigned damage) = 0;
+    virtual unsigned hit(unsigned damage) = 0;
     virtual bool shouldRemove();
+    virtual void print() = 0;
+    virtual int weight();
 };
 
 #endif /* defined(__etc__Unit__) */

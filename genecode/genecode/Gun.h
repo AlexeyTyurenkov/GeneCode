@@ -16,14 +16,15 @@
 
 class Gun : public Weapon{
     
-    virtual bool isEmpty();
+
 public:
     Gun(unsigned value):Weapon(value){};
     virtual bool canFire() const;
     
     virtual void fire(std::vector<Shoot>& salvo, Fleet* enemy);
-    virtual void hit(unsigned int damage);
-    
+    virtual unsigned hit(unsigned int damage);
+    virtual void print();
+
 
 };
 #endif /* defined(__genecode__Gun__) */

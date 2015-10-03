@@ -10,5 +10,5 @@
 
 bool Weapon::canRemove(Weapon* weapon)
 {
-    return weapon->isEmpty();
+    return weapon->shouldRemove();
 }

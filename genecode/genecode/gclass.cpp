@@ -160,3 +160,11 @@ void Gclass::compare(Gclass* other)
     delete myFleet;
     delete otherFleet;
 }
+
+
+void Gclass::print()
+{
+    auto fleet = fleetCreate();
+    fleet->print();
+    delete fleet;
+}

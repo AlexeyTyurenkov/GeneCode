@@ -19,8 +19,8 @@ class Shield: public Unit
 public:
     virtual bool canFire() const;
     Shield(unsigned value):Unit(value){};
-    virtual void hit(unsigned int damage);
-
+    virtual unsigned hit(unsigned int damage);
+    virtual void print();
 };
 
 #endif /* defined(__etc__Shield__) */

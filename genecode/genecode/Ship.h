@@ -27,6 +27,7 @@ public:
     void compress();
     bool canFire();
     static bool shouldRemove(Ship*);
-    
+    void print();
+    uint64_t weight();
 };
 #endif /* defined(__etc__Ship__) */

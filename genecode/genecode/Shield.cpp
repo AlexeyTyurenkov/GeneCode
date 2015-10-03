@@ -7,15 +7,20 @@
 //
 
 #include "Shield.h"
-
+#include <iostream>
 
 bool Shield::canFire() const
 {
     return false;
 }
 
-void Shield::hit(unsigned int damage)
+unsigned Shield::hit(unsigned int damage)
 {
+    damage/=2;
+    if (!damage)
+    {
+        damage = 1;
+    }
     if (damage <=  value)
     {
         value-=damage;
@@ -24,4 +29,10 @@ void Shield::hit(unsigned int damage)
     {
         value = 0;
     }
+    return 0;
+}
+
+void Shield::print()
+{
+    std::cout << "Shield:" << value << std::endl;
 }

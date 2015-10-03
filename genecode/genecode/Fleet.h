@@ -33,6 +33,10 @@ public:
     
     size_t visibleCount();
     Ship* randomShip();
+    
+    
+    void print();
+
 };
 
 

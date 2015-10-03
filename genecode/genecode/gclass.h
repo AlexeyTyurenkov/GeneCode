@@ -42,5 +42,8 @@ public:
     //Create new
     static Gclass* empty();
     
+    //Print
+    void print();
+    
 };
 #endif /* defined(__etc__gclass__) */

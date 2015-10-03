@@ -17,3 +17,8 @@ Unit::~Unit()
 {
     return value == 0;
 }
+
+int Unit::weight()
+{
+    return value;
+}
