@@ -13,7 +13,7 @@
 
 unsigned Shield::hit(unsigned int damage)
 {
-    damage/=2;
+    damage>>=2;
     if (!damage)
     {
         damage = 1;
