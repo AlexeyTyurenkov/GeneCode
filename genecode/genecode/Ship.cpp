@@ -37,15 +37,18 @@ void Ship::hit(unsigned int value)
 
 void Ship::fire(std::vector<Shoot>&salvo, Fleet *enemy)
 {
+    double ourspeed = speed();
     for (auto weapon : weapons)
     {
-        weapon->fire(salvo, enemy);
+        weapon->fire(salvo, enemy, ourspeed);
     }
 }
 
 void Ship::compress()
 {
     weapons.erase(std::remove_if(weapons.begin(), weapons.end(), [](Weapon* weapon){ return weapon->shouldRemove();}),weapons.end());
+    engines.erase(std::remove_if(engines.begin(), engines.end(), [](Engine* engine){ return engine->shouldRemove();}),engines.end());
+
     units.erase(std::remove_if(units.begin(), units.end(), [](Unit* unit){
         bool result = unit->shouldRemove();
         if (result) delete unit;
@@ -83,4 +86,19 @@ uint64_t Ship::weight()
         
     });
     return summ;
+}
+
+
+
+
+double Ship::speed()
+{
+    double result = 0.0;
+    std::for_each(engines.begin(),engines.end(),[&result](Engine* unit){
+        
+        result += unit->power();
+        
+    });
+    result/=weight();
+    return result;
 }

@@ -14,11 +14,25 @@ bool Gun::canFire() const
     return true;
 }
 
-void Gun::fire(std::vector<Shoot> &salvo, Fleet *enemy)
+void Gun::fire(std::vector<Shoot> &salvo, Fleet *enemy, double ourspeed)
 {
+    //0.98*(x^2)/(x^2+0.3)+0.02
     if (enemy->visibleCount())
     {
-        salvo.push_back(Shoot(enemy->randomShip(), value));
+        Ship* selectedShip = enemy->randomShip();
+        double enemySpeed = selectedShip->speed();
+        double probability = enemySpeed == 0 ? 1 : [ourspeed,enemySpeed]() -> double { double x = ourspeed/enemySpeed;
+            double x2 = x*x;
+            return 0.98*x2/(x2 + 0.3) + 0.02;
+        }();
+        
+        unsigned percent = probability * 100;
+        unsigned random = rand() % 100;
+        if (percent > random)
+        {
+            salvo.push_back(Shoot(selectedShip, value));
+        }
+
     }
     
 }

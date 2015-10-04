@@ -13,7 +13,9 @@
 
 void ShipBuilder::addEngine(unsigned int value)
 {
-    units.push_back(new Engine(value));
+    Engine* engine =new Engine(value);
+    units.push_back(engine);
+    engines.push_back(engine);
 }
 
 void ShipBuilder::addShield(unsigned int value)
@@ -31,7 +33,7 @@ void ShipBuilder::addGun(unsigned int value)
 
 Ship* ShipBuilder::getShip()
 {
-    Ship* ship = new Ship(units,weapon);
+    Ship* ship = new Ship(units,weapon,engines);
     return ship;
 }
 

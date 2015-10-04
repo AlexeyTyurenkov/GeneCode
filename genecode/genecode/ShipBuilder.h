@@ -11,14 +11,13 @@
 
 
 #include <vector>
-#include "Ship.h"
-#include "Unit.h"
-#include "Weapon.hpp"
+#include "GLOBAL_CONST.h"
 
 class ShipBuilder
 {
     std::vector<Unit*> units;
     std::vector<Weapon*> weapon;
+    std::vector<Engine*> engines;
 public:
     
     void addShield(unsigned value);

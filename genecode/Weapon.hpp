@@ -22,7 +22,7 @@ class Weapon:public Unit {
     
 public:
     Weapon(unsigned value):Unit(value){};
-    virtual void fire(std::vector<Shoot>& salvo, Fleet* enemy) = 0;
+    virtual void fire(std::vector<Shoot>& salvo, Fleet* enemy, double ourspeed) = 0;
     static bool canRemove(Weapon*);
 };
 

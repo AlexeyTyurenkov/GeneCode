@@ -16,18 +16,25 @@ bool Engine::canFire() const
 
 unsigned Engine::hit(unsigned int damage)
 {
+    unsigned newDamage = 0;
     if (damage <=  value)
     {
         value-=damage;
     }
     else
     {
+        newDamage = value / 2;
         value = 0;
     }
-    return rand()%2;
+    return newDamage?rand()%newDamage:0;
 }
 
 void Engine::print()
 {
     std::cout << "Engine:" << value << std::endl;
+}
+
+uint32_t Engine::power()
+{
+    return value;
 }

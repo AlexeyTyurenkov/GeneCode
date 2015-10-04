@@ -13,7 +13,8 @@
 #include "Unit.h"
 #include "Weapon.hpp"
 #include "Fleet.h"
-
+#include "Engine.h"
+#include "Ship.h"
 
 #define MAIN_DIR "/Users/alterego4/GeneCode/temp/"
 

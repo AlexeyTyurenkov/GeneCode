@@ -14,13 +14,19 @@
 
 #include "GLOBAL_CONST.h"
 
+class Weapon;
+
 class Ship
 {
 private:
     std::vector<Unit*> units;
     std::vector<Weapon*> weapons;
+    std::vector<Engine*> engines;
 public:
-    Ship(std::vector<Unit*> unit, std::vector<Weapon*> weapon):units(unit), weapons(weapon){};
+    Ship(std::vector<Unit*> unit, std::vector<Weapon*> weapon,std::vector<Engine*> engines):
+                units(unit),
+                weapons(weapon),
+                engines(engines){};
     ~Ship();
     void hit(unsigned value);
     void fire(std::vector<Shoot>&salvo, Fleet *enemy);
@@ -28,6 +34,7 @@ public:
     bool canFire();
     static bool shouldRemove(Ship*);
     void print();
+    double speed();
     uint64_t weight();
 };
 #endif /* defined(__etc__Ship__) */

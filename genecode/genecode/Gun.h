@@ -21,7 +21,7 @@ public:
     Gun(unsigned value):Weapon(value){};
     virtual bool canFire() const;
     
-    virtual void fire(std::vector<Shoot>& salvo, Fleet* enemy);
+    virtual void fire(std::vector<Shoot> &salvo, Fleet *enemy, double ourspeed);
     virtual unsigned hit(unsigned int damage);
     virtual void print();
 

@@ -22,5 +22,6 @@ public:
     virtual bool canFire() const;
     virtual unsigned hit(unsigned int damage);
     virtual void print();
+    uint32_t power();
 };
 #endif /* defined(__genecode__Engine__) */
