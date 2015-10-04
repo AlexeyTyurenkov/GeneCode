@@ -17,7 +17,6 @@ class Unit
 protected:
     int value;
 public:
-    virtual bool canFire() const = 0;
     Unit(unsigned value):value(value){};
     virtual ~Unit();
     virtual unsigned hit(unsigned damage) = 0;

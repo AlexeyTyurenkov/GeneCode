@@ -9,10 +9,7 @@
 #include "Shield.h"
 #include <iostream>
 
-bool Shield::canFire() const
-{
-    return false;
-}
+
 
 unsigned Shield::hit(unsigned int damage)
 {

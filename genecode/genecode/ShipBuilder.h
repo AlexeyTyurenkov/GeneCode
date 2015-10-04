@@ -23,6 +23,8 @@ public:
     void addShield(unsigned value);
     void addEngine(unsigned value);
     void addGun(unsigned value);
+    void addGauss(unsigned int value);
+
     Ship*  getShip();
     ~ShipBuilder();
 };

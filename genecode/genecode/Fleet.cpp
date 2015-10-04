@@ -17,7 +17,7 @@ typedef enum {
     kShield  = 1,
     kEngine  = 2,
     kGun     = 3,
-    
+    kGauss   = 4,
     kUnknown = 256
 } UnitType;
 
@@ -33,6 +33,7 @@ UnitType unittypefromCode(uint32_t T)
         case kShield:
         case kEngine:
         case kGun:
+        case kGauss:
             result = static_cast<UnitType>(control);
             break;
         default:
@@ -68,6 +69,9 @@ Fleet::Fleet(std::vector<shima_t> vector)
                 break;
             case kGun:
                 builder->addGun(value);
+                break;
+            case kGauss:
+                builder->addGauss(value);
                 break;
             case kStopStart:
             {

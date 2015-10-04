@@ -9,10 +9,7 @@
 #include "Gun.h"
 #include <iostream>
 
-bool Gun::canFire() const
-{
-    return true;
-}
+
 
 void Gun::fire(std::vector<Shoot> &salvo, Fleet *enemy, double ourspeed)
 {

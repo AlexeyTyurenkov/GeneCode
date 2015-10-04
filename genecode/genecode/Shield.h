@@ -17,7 +17,7 @@ class Shield: public Unit
     
     
 public:
-    virtual bool canFire() const;
+
     Shield(unsigned value):Unit(value){};
     virtual unsigned hit(unsigned int damage);
     virtual void print();

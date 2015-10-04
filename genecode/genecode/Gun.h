@@ -19,7 +19,7 @@ class Gun : public Weapon{
     unsigned calmdown;
 public:
     Gun(unsigned value):Weapon(value){};
-    virtual bool canFire() const;
+
     
     virtual void fire(std::vector<Shoot> &salvo, Fleet *enemy, double ourspeed);
     virtual unsigned hit(unsigned int damage);

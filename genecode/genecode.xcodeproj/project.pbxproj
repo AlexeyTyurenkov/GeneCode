@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		D95EC4C71BBEA84400E49DF1 /* Shoot.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D95EC4C51BBEA84400E49DF1 /* Shoot.cpp */; settings = {ASSET_TAGS = (); }; };
 		D95EC4CA1BBEE84E00E49DF1 /* Weapon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D95EC4C81BBEE84E00E49DF1 /* Weapon.cpp */; settings = {ASSET_TAGS = (); }; };
+		D95EC4CD1BC13D8B00E49DF1 /* GaussCannon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D95EC4CB1BC13D8A00E49DF1 /* GaussCannon.cpp */; settings = {ASSET_TAGS = (); }; };
 		D9B3804A1BBC78CF001BF29A /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D9B380491BBC78CF001BF29A /* main.cpp */; };
 		D9B3805C1BBC7A21001BF29A /* Fleet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D9B380501BBC7A21001BF29A /* Fleet.cpp */; };
 		D9B3805D1BBC7A21001BF29A /* Shield.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D9B380541BBC7A21001BF29A /* Shield.cpp */; };
@@ -37,6 +38,8 @@
 		D95EC4C61BBEA84400E49DF1 /* Shoot.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Shoot.hpp; sourceTree = "<group>"; };
 		D95EC4C81BBEE84E00E49DF1 /* Weapon.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Weapon.cpp; sourceTree = "<group>"; };
 		D95EC4C91BBEE84E00E49DF1 /* Weapon.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Weapon.hpp; sourceTree = "<group>"; };
+		D95EC4CB1BC13D8A00E49DF1 /* GaussCannon.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GaussCannon.cpp; path = genecode/GaussCannon.cpp; sourceTree = "<group>"; };
+		D95EC4CC1BC13D8A00E49DF1 /* GaussCannon.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GaussCannon.hpp; path = genecode/GaussCannon.hpp; sourceTree = "<group>"; };
 		D9B380461BBC78CF001BF29A /* genecode */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = genecode; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9B380491BBC78CF001BF29A /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		D9B380501BBC7A21001BF29A /* Fleet.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Fleet.cpp; path = genecode/Fleet.cpp; sourceTree = "<group>"; };
@@ -81,6 +84,8 @@
 		D9B3803D1BBC78CF001BF29A = {
 			isa = PBXGroup;
 			children = (
+				D95EC4CB1BC13D8A00E49DF1 /* GaussCannon.cpp */,
+				D95EC4CC1BC13D8A00E49DF1 /* GaussCannon.hpp */,
 				D9B380671BBC87AC001BF29A /* Engine.cpp */,
 				D9B380681BBC87AC001BF29A /* Engine.h */,
 				D9B380641BBC872A001BF29A /* Gun.cpp */,
@@ -182,6 +187,7 @@
 				D9B380601BBC7A21001BF29A /* ShipBuilder.cpp in Sources */,
 				D9B380661BBC872A001BF29A /* Gun.cpp in Sources */,
 				D9B3805C1BBC7A21001BF29A /* Fleet.cpp in Sources */,
+				D95EC4CD1BC13D8B00E49DF1 /* GaussCannon.cpp in Sources */,
 				D9B3805D1BBC7A21001BF29A /* Shield.cpp in Sources */,
 				D9B3804A1BBC78CF001BF29A /* main.cpp in Sources */,
 				D9B3805F1BBC7A21001BF29A /* Unit.cpp in Sources */,

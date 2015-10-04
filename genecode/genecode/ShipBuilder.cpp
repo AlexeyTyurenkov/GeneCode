@@ -10,6 +10,7 @@
 #include "Engine.h"
 #include "Gun.h"
 #include "Shield.h"
+#include "GaussCannon.hpp"
 
 void ShipBuilder::addEngine(unsigned int value)
 {
@@ -27,6 +28,14 @@ void ShipBuilder::addShield(unsigned int value)
 void ShipBuilder::addGun(unsigned int value)
 {
     Gun* gun = new Gun(value);
+    units.push_back(gun);
+    weapon.push_back(gun);
+}
+
+
+void ShipBuilder::addGauss(unsigned int value)
+{
+    GaussCannon* gun = new GaussCannon(value);
     units.push_back(gun);
     weapon.push_back(gun);
 }
