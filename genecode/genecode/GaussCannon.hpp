@@ -13,8 +13,9 @@
 #include "GLOBAL_CONST.h"
 
 class GaussCannon: public Weapon {
-    
-    
+    double calibrationParameter = 16;
+protected:
+    virtual double calibration() {return calibrationParameter;};
 public:
     GaussCannon(unsigned value):Weapon(value){};
     

@@ -12,3 +12,11 @@ bool Weapon::canRemove(Weapon* weapon)
 {
     return weapon->shouldRemove();
 }
+
+bool Weapon::isHitEnemy(double ourSpeed, double enemySpeed)
+{
+    double probability = enemySpeed == 0 ? 1 : hitChance(ourSpeed/enemySpeed);
+    unsigned percent = probability * 100;
+    unsigned random = rand() % 100;
+    return (percent > random);
+}

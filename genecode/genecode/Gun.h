@@ -10,6 +10,7 @@
 #define __genecode__Gun__
 
 #include <stdio.h>
+#include <functional>
 
 #include "GLOBAL_CONST.h"
 
@@ -17,6 +18,10 @@
 class Gun : public Weapon{
     
     unsigned calmdown;
+    double calibrationParameter = 0.3;
+
+protected:
+    virtual double calibration() {return calibrationParameter;};
 public:
     Gun(unsigned value):Weapon(value){};
 
