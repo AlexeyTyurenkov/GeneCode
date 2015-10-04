@@ -10,6 +10,7 @@
 #include <cstdlib>
 #include <algorithm>
 #include <iostream>
+#include <numeric>
 
 Ship::~Ship()
 {
@@ -54,6 +55,8 @@ void Ship::compress()
         if (result) delete unit;
         return result;
     }),units.end());
+    _weight = std::accumulate(units.begin(), units.end(), 0, [](uint64_t weight, Unit* unit){return weight + unit->weight();});
+    _speed  = (double)std::accumulate(engines.begin(), engines.end(), 0, [](uint64_t power, Engine* engine){return power + engine->power();})/_weight;
 }
 
 bool Ship::shouldRemove(Ship * it)
@@ -79,26 +82,10 @@ void Ship::print()
 
 uint64_t Ship::weight()
 {
-    uint64_t summ = 0;
-    std::for_each(units.begin(),units.end(),[&summ](Unit* unit){
-        
-        summ += unit->weight();
-        
-    });
-    return summ;
+    return _weight;
 }
-
-
-
 
 double Ship::speed()
 {
-    double result = 0.0;
-    std::for_each(engines.begin(),engines.end(),[&result](Engine* unit){
-        
-        result += unit->power();
-        
-    });
-    result/=weight();
-    return result;
+    return _speed;
 }

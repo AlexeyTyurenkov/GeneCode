@@ -24,6 +24,7 @@ class Gclass
     std::string filename;
     Fleet* fleetCreate() const;
     int score = 0;
+
 public:
     //genetic operators
     void mutation();
@@ -31,9 +32,9 @@ public:
     Gclass* crossover(Gclass* gene);
 
     //Save to disk delete from disk
-    static Gclass* loadFromFile(std::string filename);
-    void deleteGene();
-    bool save();
+    static Gclass* loadFromFile(std::string dir, std::string filename);
+    void deleteGene(std::string dir);
+    bool save(std::string dir);
     
     //Fitness operator
     bool betterThan(const Gclass* other) const;

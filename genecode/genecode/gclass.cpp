@@ -31,11 +31,11 @@ std::string random_string( size_t length )
 
 
 
-Gclass* Gclass::loadFromFile(std::string filename)
+Gclass* Gclass::loadFromFile(std::string dir, std::string filename)
 {
     Gclass* result = nullptr;
     //open file
-    ifstream infile(filename, ios_base::binary|ios_base::in|ios::ate);
+    ifstream infile(dir+filename, ios_base::binary|ios_base::in|ios::ate);
     //if file opened
     if (infile.is_open())
     {
@@ -60,10 +60,10 @@ Gclass* Gclass::loadFromFile(std::string filename)
     return result;
 }
 
-bool Gclass::save()
+bool Gclass::save(std::string dir)
 {
     bool result = false;
-    ofstream outfile(filename, ios_base::binary|ios_base::out|ios::trunc);
+    ofstream outfile(dir + filename, ios_base::binary|ios_base::out|ios::trunc);
     if (outfile.is_open())
     {
         shima_t* shimaBuffer = new shima_t[internalArray.size()];
@@ -101,7 +101,7 @@ Gclass* Gclass::empty()
 {
     Gclass* result = new Gclass;
     result->internalArray.push_back(0);
-    result->filename = string(MAIN_DIR) + random_string(16);
+    result->filename = random_string(16);
     return result;
 }
 
@@ -142,13 +142,13 @@ Gclass* Gclass::crossover(Gclass *gene)
         
         internalArray.insert(internalArray.begin() + position,shima);
     }
-    result->filename = string(MAIN_DIR) + random_string(16);
+    result->filename = random_string(16);
     return result;
 }
 
-void Gclass::deleteGene()
+void Gclass::deleteGene(std::string dir)
 {
-    remove(filename.c_str());
+    remove((dir + filename).c_str());
 }
 
 void Gclass::compare(Gclass* other)
@@ -187,3 +187,4 @@ void Gclass::clearScore()
 {
     score = 0;
 }
+

@@ -22,6 +22,8 @@ private:
     std::vector<Unit*> units;
     std::vector<Weapon*> weapons;
     std::vector<Engine*> engines;
+    double _speed;
+    uint64_t _weight;
 public:
     Ship(std::vector<Unit*> unit, std::vector<Weapon*> weapon,std::vector<Engine*> engines):
                 units(unit),
