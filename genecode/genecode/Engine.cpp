@@ -36,5 +36,5 @@ void Engine::print()
 
 uint32_t Engine::power()
 {
-    return value;
+    return 2*value;
 }

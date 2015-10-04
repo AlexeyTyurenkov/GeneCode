@@ -38,7 +38,8 @@ public:
     //Fitness operator
     bool betterThan(const Gclass* other) const;
     void compare(Gclass* other);
-
+    void clearScore();
+    
     //Create new
     static Gclass* empty();
     

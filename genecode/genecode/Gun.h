@@ -16,7 +16,7 @@
 
 class Gun : public Weapon{
     
-
+    unsigned calmdown;
 public:
     Gun(unsigned value):Weapon(value){};
     virtual bool canFire() const;

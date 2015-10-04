@@ -18,6 +18,15 @@ class Ship;
 
 typedef uint32_t shima_t;
 
+
+enum BattleResult: uint8_t {
+    FAIL = 0,
+    MINORDRAW = 1,
+    DRAW = 2,
+    WIN  = 3
+} ;
+
+
 class Fleet
 {
 private:
@@ -28,7 +37,7 @@ private:
     void compress();
 public:
     Fleet(std::vector<shima_t>);
-    bool wins(Fleet* other);
+    BattleResult result(Fleet *other);
     ~Fleet();
     
     size_t visibleCount();

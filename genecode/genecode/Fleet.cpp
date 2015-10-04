@@ -102,19 +102,20 @@ Fleet::~Fleet()
 
 
 #pragma mark - Fitness point
-bool Fleet::wins(Fleet *other)
+BattleResult Fleet::result(Fleet *other)
 {
-    bool result = false;
+    BattleResult result = MINORDRAW;
     
     bool IcanFire = canFire();
     bool TheyCanFire = other->canFire();
-    
+    bool fired = false;
     while (IcanFire && TheyCanFire)
     {
         std::vector<Shoot> salvo;
         
         this->salvo(salvo, other);
         other->salvo(salvo, this);
+        fired = salvo.size() > 0;
         
         for (auto shoot: salvo)
         {
@@ -130,19 +131,15 @@ bool Fleet::wins(Fleet *other)
     
     if (IcanFire && !TheyCanFire)
     {
-        result = true;
+        result = WIN;
     }
     else if (TheyCanFire && !IcanFire)
     {
-        result = false;
+        result = FAIL;
     }
-    else if (ships.size() == other->ships.size())
+    else if (fired)
     {
-        result = quality > other->quality;
-    }
-    else
-    {
-        result = ships.size() > other->ships.size();
+        result = DRAW;
     }
     return result;
 }

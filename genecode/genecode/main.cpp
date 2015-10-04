@@ -65,7 +65,7 @@ int main(int argc, const char * argv[])
     {
         corePopulation.push_back(Gclass::empty());
     }
-    for (int i = 0; i<2000; i++)
+    for (int i = 0; i<100; i++)
     {
         Population population(corePopulation);
         corePopulation.clear();
@@ -88,6 +88,7 @@ int main(int argc, const char * argv[])
             auto newgene = gene->crossover(population.at(rand));
             corePopulation.push_back(newgene);
             gene->mutation();
+            gene->clearScore();
             corePopulation.push_back(gene);
         });
         //kill the others

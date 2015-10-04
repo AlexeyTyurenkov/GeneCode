@@ -156,7 +156,21 @@ void Gclass::compare(Gclass* other)
     auto myFleet = fleetCreate();
     auto otherFleet = other->fleetCreate();
 
-    myFleet->wins(otherFleet)?score++:other->score++;
+
+    switch (myFleet->result(otherFleet)) {
+        case WIN:
+            score+=3;
+            break;
+        case DRAW:
+            score+=1;
+            other->score+=1;
+            break;
+        case FAIL:
+            other->score+=3;
+            break;
+        default:
+            break;
+    }
     delete myFleet;
     delete otherFleet;
 }
@@ -167,4 +181,9 @@ void Gclass::print()
     auto fleet = fleetCreate();
     fleet->print();
     delete fleet;
+}
+
+void Gclass::clearScore()
+{
+    score = 0;
 }
