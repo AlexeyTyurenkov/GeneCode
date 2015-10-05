@@ -16,7 +16,7 @@ unsigned Shield::hit(unsigned int damage)
     damage>>=2;
     if (!damage)
     {
-        damage = rand():2?1:0;
+        damage = rand()%2?1:0;
     }
     if (damage <=  value)
     {

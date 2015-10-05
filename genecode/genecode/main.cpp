@@ -121,7 +121,7 @@ int main(int argc, const char * argv[])
         });
         population.clear();
         cout << "Generation:" << i << endl;
-        if(!(i%10))
+        if(!(i%5))
         {
             std::time_t rawtime;
             std::tm* timeinfo;
