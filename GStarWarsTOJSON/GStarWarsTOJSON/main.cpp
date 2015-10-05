@@ -38,6 +38,17 @@ size_t loadFromFile(std::string dir, std::string filename, shima_t*& buffer)
     return bufferlength;
 }
 
+bool isPrefix(string first, string second)
+{
+    auto res = std::mismatch(first.begin(), first.end(), second.begin());
+    
+    if (res.first == first.end())
+    {
+        return true;
+    }
+    return false;
+}
+
 #define MAIN_TEMP_DIR "/Users/alterego4/GeneCode/temp/"
 #define MAIN_JSON_DIR "/Users/alterego4/GeneCode/JSON/"
 
@@ -50,7 +61,7 @@ int main(int argc, const char * argv[])
         if (dp->d_type == DT_REG && !isPrefix(".", dp->d_name))
         {
             //           cout << dp->d_name << endl;
-            if (auto fall = Gclass::loadFromFile(dirname,dp->d_name))
+            if (auto len = loadFromFile(dirname,dp->d_name))
             {
                 all.push_back(fall);
             }

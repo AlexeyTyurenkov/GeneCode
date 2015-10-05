@@ -7,20 +7,31 @@
 //
 
 #include "GaussCannon.hpp"
+#include <cmath>
+
 void GaussCannon::fire(std::vector<Shoot> &salvo, Fleet *enemy, double ourspeed)
 {
-    //0.98*(x^2)/(x^2+16)+0.02
-    if (enemy->visibleCount())
+    if (reloadTurns)
     {
-        for (int i = value; i > 0; i--)
+        reloadTurns--;
+    }
+    else
+    {
+        //0.98*(x^2)/(x^2+16)+0.02
+        if (enemy->visibleCount())
         {
-            Ship* selectedShip = enemy->randomShip();
-            if(isHitEnemy(ourspeed, selectedShip->speed()))
+            for (int i = value; i > 0; i--)
             {
-                salvo.push_back(Shoot(selectedShip, 1));
+                Ship* selectedShip = enemy->randomShip();
+                if(isHitEnemy(ourspeed, selectedShip->speed()))
+                {
+                    salvo.push_back(Shoot(selectedShip, 1));
+                }
             }
+            //When we fired to object
+            reloadTurns = sqrt(value);
         }
-    }    
+    }
 }
 
 

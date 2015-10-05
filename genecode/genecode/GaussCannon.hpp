@@ -14,6 +14,8 @@
 
 class GaussCannon: public Weapon {
     double calibrationParameter = 16;
+    unsigned reloadTurns = 0;
+    
 protected:
     virtual double calibration() {return calibrationParameter;};
 public:

@@ -17,7 +17,7 @@
 
 class Gun : public Weapon{
     
-    unsigned calmdown;
+    unsigned calmdown = 0;
     double calibrationParameter = 0.3;
 
 protected:

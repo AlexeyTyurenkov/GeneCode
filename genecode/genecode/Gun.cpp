@@ -8,7 +8,7 @@
 
 #include "Gun.h"
 #include <iostream>
-
+#include <cmath>
 
 
 
@@ -16,13 +16,21 @@
 
 void Gun::fire(std::vector<Shoot> &salvo, Fleet *enemy, double ourspeed)
 {
-    //0.98*(x^2)/(x^2+0.3)+0.02
-    if (enemy->visibleCount())
+    if (calmdown)
     {
-        Ship* selectedShip = enemy->randomShip();
-        if(isHitEnemy(ourspeed, selectedShip->speed()))
+        calmdown--;
+    }
+    else
+    {
+        //0.98*(x^2)/(x^2+0.3)+0.02
+        if (enemy->visibleCount())
         {
-            salvo.push_back(Shoot(selectedShip, value));
+            Ship* selectedShip = enemy->randomShip();
+            if(isHitEnemy(ourspeed, selectedShip->speed()))
+            {
+                salvo.push_back(Shoot(selectedShip, value));
+            }
+            calmdown = log(value);
         }
     }
 }
