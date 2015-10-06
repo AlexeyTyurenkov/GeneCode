@@ -105,7 +105,7 @@ void Gclass::mutation()
     {
         if (RADIATION > (rand()%MAX_SCALE))
         {
-            internalArray[i]^= 1 << rand()%32;
+            internalArray[i]^= 1 << rand()%(sizeof(shima_t)*8);
         }
     }
 }
