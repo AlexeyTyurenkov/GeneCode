@@ -14,6 +14,9 @@
 #include <sstream>
 #include <vector>
 #include <memory>
+#include <fstream>
+#include <dirent.h>
+
 #include "Shoot.hpp"
 #include "Unit.h"
 #include "Weapon.hpp"
