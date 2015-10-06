@@ -15,9 +15,9 @@
 
 class ShipBuilder
 {
-    std::vector<Unit*> units;
-    std::vector<Weapon*> weapon;
-    std::vector<Engine*> engines;
+    std::vector<std::shared_ptr<Unit>> units;
+    std::vector<std::weak_ptr<Weapon>> weapon;
+    std::vector<std::weak_ptr<Engine>> engines;
 public:
     
     void addShield(unsigned value);

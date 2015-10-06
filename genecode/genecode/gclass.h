@@ -9,11 +9,7 @@
 #ifndef __etc__gclass__
 #define __etc__gclass__
 
-#include <stdio.h>
-#include <cstdlib>
-#include <string>
-#include "Fleet.h"
-#include <vector>
+
 #include "GLOBAL_CONST.h"
 
 

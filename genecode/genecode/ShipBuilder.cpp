@@ -14,20 +14,20 @@
 
 void ShipBuilder::addEngine(unsigned int value)
 {
-    Engine* engine =new Engine(value);
+    std::shared_ptr<Engine> engine = std::make_shared<Engine>(value);
     units.push_back(engine);
     engines.push_back(engine);
 }
 
 void ShipBuilder::addShield(unsigned int value)
 {
-    units.push_back(new Shield(value));
+    units.push_back(std::make_shared<Shield>(value));
 }
 
 
 void ShipBuilder::addGun(unsigned int value)
 {
-    Gun* gun = new Gun(value);
+    std::shared_ptr<Gun> gun = std::make_shared<Gun>(value);
     units.push_back(gun);
     weapon.push_back(gun);
 }
@@ -35,7 +35,7 @@ void ShipBuilder::addGun(unsigned int value)
 
 void ShipBuilder::addGauss(unsigned int value)
 {
-    GaussCannon* gun = new GaussCannon(value);
+    std::shared_ptr<GaussCannon> gun = std::make_shared<GaussCannon>(value);
     units.push_back(gun);
     weapon.push_back(gun);
 }

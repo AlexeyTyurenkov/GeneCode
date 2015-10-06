@@ -9,25 +9,24 @@
 #ifndef __etc__Ship__
 #define __etc__Ship__
 
-#include <stdio.h>
-#include <vector>
-#include <iostream>
+
 
 #include "GLOBAL_CONST.h"
 
 class Weapon;
 class Engine;
+class Unit;
 
 class Ship
 {
 private:
-    std::vector<Unit*> units;
-    std::vector<Weapon*> weapons;
-    std::vector<Engine*> engines;
+    std::vector<std::shared_ptr<Unit>> units;
+    std::vector<std::weak_ptr<Weapon>> weapons;
+    std::vector<std::weak_ptr<Engine>> engines;
     double _speed;
     uint64_t _weight;
 public:
-    Ship(std::vector<Unit*> unit, std::vector<Weapon*> weapon,std::vector<Engine*> engines):
+    Ship(std::vector<std::shared_ptr<Unit>> unit, std::vector<std::weak_ptr<Weapon>> weapon,std::vector<std::weak_ptr<Engine>> engines):
                 units(unit),
                 weapons(weapon),
                 engines(engines){};
