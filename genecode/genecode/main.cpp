@@ -85,6 +85,9 @@ void compareGenes(Population& population, Population::iterator begin, Population
 
 int main(int argc, const char * argv[])
 {
+    std::time_t rawtime;
+    std::tm* timeinfo;
+    char buffer [80];
     Population corePopulation;
     srand((unsigned)time(NULL));
     //load all
@@ -105,14 +108,30 @@ int main(int argc, const char * argv[])
                 return a->betterThan(b);
             });
         }
+        std::time(&rawtime);
+        timeinfo = std::localtime(&rawtime);
+        
+        std::strftime(buffer,80,"%Y-%m-%d-%H-%M-%S",timeinfo);
+        std::string stringifiedBuffer(buffer);
+        std::string tempDir(MAIN_DIR + stringifiedBuffer + "/");
+        mkdir(tempDir.c_str(), 0777);
         //make love
-        for_each(population.begin(),population.size() > MAX_POPULATION ?  population.begin() + MAX_POPULATION : population.end(), [&corePopulation,&population](Gclass* gene){
+        for_each(population.begin(),population.size() > MAX_POPULATION ?  population.begin() + MAX_POPULATION : population.end(), [&corePopulation,&population, &tempDir](Gclass* gene){
             auto rand = std::rand() % population.size();
             auto newgene = gene->crossover(population.at(rand));
             corePopulation.push_back(newgene);
             gene->mutation();
-            gene->clearScore();
+
             corePopulation.push_back(gene);
+            
+            gene->save(tempDir);
+            gene->save(MAIN_DIR);
+            gene->saveJSON(tempDir);
+            
+            newgene->save(MAIN_DIR);
+            newgene->save(tempDir);
+            newgene->saveJSON(tempDir);
+            gene->clearScore();
         });
         //kill the others
         for_each(population.begin() + (population.size() > MAX_POPULATION ? MAX_POPULATION : population.size()),population.end(), [](Gclass* gene)
@@ -121,24 +140,6 @@ int main(int argc, const char * argv[])
             delete gene;
         });
         population.clear();
-
-
-        {
-            std::time_t rawtime;
-            std::tm* timeinfo;
-            char buffer [80];
-            
-            std::time(&rawtime);
-            timeinfo = std::localtime(&rawtime);
-            
-            std::strftime(buffer,80,"%Y-%m-%d-%H-%M-%S",timeinfo);
-            std::string stringifiedBuffer(buffer);
-            std::string tempDir(MAIN_DIR + stringifiedBuffer + "/");
-            mkdir(tempDir.c_str(), 0777);
-            for_each(corePopulation.begin(), corePopulation.end(), [&tempDir](Gclass* g){g->save(tempDir);});
-            for_each(corePopulation.begin(), corePopulation.end(), [](Gclass* g){g->save(MAIN_DIR);});
-            for_each(corePopulation.begin(), corePopulation.end(), [&tempDir](Gclass* g){g->saveJSON(tempDir);});
-        }
         cout << "Generation:" << i << " saved" << endl;
     }
     //Save all

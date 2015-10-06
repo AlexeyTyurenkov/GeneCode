@@ -26,7 +26,7 @@ const unsigned int RADIATION      = 1000;//1%
 const unsigned int MAX_SCALE      = 100000;//100%
 
 
-typedef uint32_t shima_t;
+typedef uint16_t shima_t;
 
 
 #endif

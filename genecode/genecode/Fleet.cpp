@@ -24,9 +24,9 @@ typedef enum {
 
 
 
-UnitType unittypefromCode(uint32_t T)
+UnitType unittypefromCode(shima_t T)
 {
-    auto control = T >> 24;
+    auto control = T >> 12;
     UnitType result = kUnknown;
     switch (control)
     {
@@ -217,6 +217,7 @@ std::string Fleet::json()
     {
         case 0:
             result << "";
+            break;
         case 1:
             result << ships[0]->json();
             break;

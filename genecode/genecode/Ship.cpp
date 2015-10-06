@@ -92,6 +92,7 @@ std::string Ship::json()
     {
         case 0:
             result << "";
+            break;
         case 1:
             result << units[0]->json();
             break;

@@ -16,8 +16,7 @@
 
 class Ship;
 
-typedef uint32_t shima_t;
-
+typedef uint16_t shima_t;
 
 enum BattleResult: uint8_t {
     FAIL = 0,
