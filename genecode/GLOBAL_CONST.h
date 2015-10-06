@@ -15,6 +15,9 @@
 #include "Fleet.h"
 #include "Engine.h"
 #include "Ship.h"
+#include <iostream>
+#include <sstream>
+
 
 #define MAIN_DIR "/Users/alterego4/GeneCode/temp/"
 

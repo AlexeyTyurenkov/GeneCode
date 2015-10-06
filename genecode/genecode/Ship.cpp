@@ -11,6 +11,8 @@
 #include <algorithm>
 #include <iostream>
 #include <numeric>
+#include <sstream>
+
 
 Ship::~Ship()
 {
@@ -78,6 +80,32 @@ void Ship::print()
     {
         unit->print();
     }
+}
+
+std::string Ship::json()
+{
+    std::ostringstream result;
+    result << "{";
+    result << "\"weight\":" << weight() << ",";
+    result << "\"units\":[";
+    switch (units.size())
+    {
+        case 0:
+            result << "";
+        case 1:
+            result << units[0]->json();
+            break;
+        default:
+            for (auto unit = units.begin(); unit != (units.end() - 1); unit++)
+            {
+                result << (*unit)->json() << ",";
+            }
+            result << (*units.rbegin())->json();
+    }
+    result << "],";
+    result << "\"speed\":" << speed() << "";
+    result << "}";
+    return result.str();
 }
 
 uint64_t Ship::weight()

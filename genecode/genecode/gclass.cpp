@@ -80,6 +80,25 @@ bool Gclass::save(std::string dir)
     return result;
 }
 
+void Gclass::saveJSON(std::string dir)
+{
+    ofstream outfile(dir + filename+ ".json", ios_base::out|ios::trunc);
+    if (outfile.is_open())
+    {
+        Fleet* fleet = fleetCreate();
+        outfile << fleet->json();
+        delete fleet;
+        outfile.close();
+
+    }
+    else
+    {
+        cerr << "Error:" << strerror(errno) << endl;
+        cout << "Error opening file";
+    }
+
+}
+
 void Gclass::mutation()
 {
     for (int i = 0; i < internalArray.size(); i++)

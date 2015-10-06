@@ -10,7 +10,7 @@
 #define __etc__Shield__
 
 #include <stdio.h>
-#include "Unit.h"
+#include "GLOBAL_CONST.h"
 
 class Shield: public Unit
 {
@@ -21,6 +21,12 @@ public:
     Shield(unsigned value):Unit(value){};
     virtual unsigned hit(unsigned int damage);
     virtual void print();
+    virtual std::string json()
+    {
+        std::ostringstream result;
+        result << "{ \"type\":\"Shield\", \"value\":" << value << "}";
+        return result.str();
+    }
 };
 
 #endif /* defined(__etc__Shield__) */

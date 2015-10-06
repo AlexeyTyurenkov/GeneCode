@@ -45,7 +45,7 @@ public:
     
     
     void print();
-
+    std::string json();
 };
 
 

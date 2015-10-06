@@ -35,6 +35,7 @@ public:
     static Gclass* loadFromFile(std::string dir, std::string filename);
     void deleteGene(std::string dir);
     bool save(std::string dir);
+    void saveJSON(std::string dir);
     
     //Fitness operator
     bool betterThan(const Gclass* other) const;

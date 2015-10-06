@@ -7,6 +7,8 @@
 //
 
 #include "Unit.h"
+#include <sstream>
+#include <iostream>
 
 Unit::~Unit()
 {
@@ -21,4 +23,11 @@ Unit::~Unit()
 int Unit::weight()
 {
     return value;
+}
+
+std::string Unit::json()
+{
+    std::ostringstream result;
+    
+    return result.str();
 }

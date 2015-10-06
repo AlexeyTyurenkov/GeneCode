@@ -29,7 +29,7 @@ public:
     virtual void fire(std::vector<Shoot> &salvo, Fleet *enemy, double ourspeed);
     virtual unsigned hit(unsigned int damage);
     virtual void print();
-
+    virtual std::string json();
 
 };
 #endif /* defined(__genecode__Gun__) */

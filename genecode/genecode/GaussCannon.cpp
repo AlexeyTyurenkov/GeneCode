@@ -45,3 +45,10 @@ void GaussCannon::print()
 {
     std::cout << "GaussCannon:" << value << std::endl;
 }
+
+std::string GaussCannon::json()
+{
+    std::ostringstream result;
+    result << "{ \"type\":\"GaussCannon\", \"value\":" << value << "}";
+    return result.str();
+}

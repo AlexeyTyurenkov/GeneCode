@@ -50,3 +50,10 @@ void Gun::print()
 {
     std::cout << "Gun:" << value << std::endl;
 }
+
+std::string Gun::json()
+{
+    std::ostringstream result;
+    result << "{ \"type\":\"Gun\", \"value\":" << value << "}";
+    return result.str();
+}

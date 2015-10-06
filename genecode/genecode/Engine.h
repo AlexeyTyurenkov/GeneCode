@@ -10,8 +10,7 @@
 #define __genecode__Engine__
 
 #include <stdio.h>
-#include "Unit.h"
-#include <iostream>
+#include "GLOBAL_CONST.h"
 
 class Engine : public Unit
 {
@@ -23,5 +22,6 @@ public:
     virtual unsigned hit(unsigned int damage);
     virtual void print();
     uint32_t power();
+    virtual std::string json();
 };
 #endif /* defined(__genecode__Engine__) */

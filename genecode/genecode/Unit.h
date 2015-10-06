@@ -10,6 +10,7 @@
 #define __etc__Unit__
 
 #include <stdio.h>
+#include <string>
 
 class Unit
 {
@@ -23,6 +24,7 @@ public:
     virtual bool shouldRemove();
     virtual void print() = 0;
     virtual int weight();
+    virtual std::string json() = 0;
 };
 
 #endif /* defined(__etc__Unit__) */

@@ -38,3 +38,10 @@ uint32_t Engine::power()
 {
     return 2*value;
 }
+
+std::string Engine::json()
+{
+    std::ostringstream result;
+    result << "{ \"type\":\"Engine\", \"value\":" << value << "}";
+    return result.str();
+}

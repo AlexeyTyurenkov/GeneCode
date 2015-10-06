@@ -11,10 +11,12 @@
 
 #include <stdio.h>
 #include <vector>
+#include <iostream>
 
 #include "GLOBAL_CONST.h"
 
 class Weapon;
+class Engine;
 
 class Ship
 {
@@ -35,8 +37,12 @@ public:
     void compress();
     bool canFire();
     static bool shouldRemove(Ship*);
-    void print();
+    
     double speed();
     uint64_t weight();
+    
+    void print();
+    std::string json();
+    
 };
 #endif /* defined(__etc__Ship__) */

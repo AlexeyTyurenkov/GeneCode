@@ -11,6 +11,7 @@
 #include "Shoot.hpp"
 #include <cstdlib>
 #include <iostream>
+#include <sstream>
 
 typedef enum {
     kStopStart = 0,
@@ -205,3 +206,28 @@ void Fleet::print()
         }
     }
 }
+
+
+std::string Fleet::json()
+{
+    std::ostringstream result;
+    result << "{\"count\":" << ships.size() << "," <<"\"ships\":[";
+    
+    switch (ships.size())
+    {
+        case 0:
+            result << "";
+        case 1:
+            result << ships[0]->json();
+            break;
+        default:
+            for (auto ship = ships.begin();ship != (ships.end() - 1); ship++)
+            {
+                result << (*ship)->json() << ",";
+            }
+            result << (*ships.rbegin())->json();
+    }
+    result << "],\"effectivness\":" << quality << "}";
+    return result.str();
+}
+

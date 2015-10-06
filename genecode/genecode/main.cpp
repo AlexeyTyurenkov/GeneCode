@@ -78,6 +78,7 @@ void compareGenes(Population& population, Population::iterator begin, Population
             auto future = std::async(compareGenes, std::ref(population), begin, begin + length);
             compareGenes(population, begin+length, end);
             future.wait();
+            
         }
 
 };
@@ -120,8 +121,8 @@ int main(int argc, const char * argv[])
             delete gene;
         });
         population.clear();
-        cout << "Generation:" << i << endl;
-        if(!(i%5))
+
+
         {
             std::time_t rawtime;
             std::tm* timeinfo;
@@ -135,8 +136,10 @@ int main(int argc, const char * argv[])
             std::string tempDir(MAIN_DIR + stringifiedBuffer + "/");
             mkdir(tempDir.c_str(), 0777);
             for_each(corePopulation.begin(), corePopulation.end(), [&tempDir](Gclass* g){g->save(tempDir);});
+            for_each(corePopulation.begin(), corePopulation.end(), [](Gclass* g){g->save(MAIN_DIR);});
+            for_each(corePopulation.begin(), corePopulation.end(), [&tempDir](Gclass* g){g->saveJSON(tempDir);});
         }
-            
+        cout << "Generation:" << i << " saved" << endl;
     }
     //Save all
     for_each(corePopulation.begin(), corePopulation.end(), [](Gclass* g){g->save(MAIN_DIR);});
