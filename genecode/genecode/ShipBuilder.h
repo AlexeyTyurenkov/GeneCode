@@ -10,7 +10,7 @@
 #define __etc__ShipBuilder__
 
 
-#include <vector>
+
 #include "GLOBAL_CONST.h"
 
 class ShipBuilder
@@ -25,7 +25,7 @@ public:
     void addGun(unsigned value);
     void addGauss(unsigned int value);
 
-    Ship*  getShip();
+    std::shared_ptr<Ship> getShip();
     ~ShipBuilder();
 };
 

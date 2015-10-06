@@ -34,9 +34,12 @@ public:
     ~Ship();
     void hit(unsigned value);
     void fire(std::vector<Shoot>&salvo, Fleet *enemy);
-    void compress();
     bool canFire();
-    static bool shouldRemove(Ship*);
+    
+    
+    void compress();
+    
+    static bool shouldRemove(std::shared_ptr<Ship> it);
     
     double speed();
     uint64_t weight();

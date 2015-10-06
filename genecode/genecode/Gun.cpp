@@ -25,7 +25,7 @@ void Gun::fire(std::vector<Shoot> &salvo, Fleet *enemy, double ourspeed)
         //0.98*(x^2)/(x^2+0.3)+0.02
         if (enemy->visibleCount())
         {
-            Ship* selectedShip = enemy->randomShip();
+            std::shared_ptr<Ship> selectedShip = enemy->randomShip();
             if(isHitEnemy(ourspeed, selectedShip->speed()))
             {
                 salvo.push_back(Shoot(selectedShip, value));

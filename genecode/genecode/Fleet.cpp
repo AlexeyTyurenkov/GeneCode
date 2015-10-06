@@ -8,7 +8,6 @@
 
 #include "Fleet.h"
 #include "ShipBuilder.h"
-#include "Shoot.hpp"
 #include <cstdlib>
 #include <iostream>
 #include <sstream>
@@ -98,10 +97,6 @@ Fleet::Fleet(std::vector<shima_t> vector)
 #pragma mark - Destructors
 Fleet::~Fleet()
 {
-    for(auto ship: ships)
-    {
-        delete ship;
-    }
     ships.clear();
 }
 
@@ -121,7 +116,6 @@ BattleResult Fleet::result(Fleet *other)
         this->salvo(salvo, other);
         other->salvo(salvo, this);
         fired = salvo.size() > 0;
-        
         for (auto shoot: salvo)
         {
             shoot.fire();
@@ -177,9 +171,9 @@ size_t Fleet::visibleCount()
     return ships.size();
 }
 
-Ship* Fleet::randomShip()
+std::shared_ptr<Ship> Fleet::randomShip()
 {
-    Ship* result = nullptr;
+    std::shared_ptr<Ship> result = nullptr;
     if (ships.size())
     {
         size_t randomIndex = rand()%ships.size();

@@ -40,10 +40,9 @@ void ShipBuilder::addGauss(unsigned int value)
     weapon.push_back(gun);
 }
 
-Ship* ShipBuilder::getShip()
+std::shared_ptr<Ship> ShipBuilder::getShip()
 {
-    Ship* ship = new Ship(units,weapon,engines);
-    return ship;
+    return std::make_shared<Ship>(units,weapon,engines);
 }
 
 ShipBuilder::~ShipBuilder()

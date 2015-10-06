@@ -22,7 +22,7 @@ void GaussCannon::fire(std::vector<Shoot> &salvo, Fleet *enemy, double ourspeed)
         {
             for (int i = value; i > 0; i--)
             {
-                Ship* selectedShip = enemy->randomShip();
+                std::shared_ptr<Ship> selectedShip = enemy->randomShip();
                 if(isHitEnemy(ourspeed, selectedShip->speed()))
                 {
                     salvo.push_back(Shoot(selectedShip, 1));

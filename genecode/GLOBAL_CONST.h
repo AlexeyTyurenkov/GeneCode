@@ -9,14 +9,17 @@
 #ifndef genecode_GLOBAL_CONST_h
 #define genecode_GLOBAL_CONST_h
 
+
+#include <iostream>
+#include <sstream>
+#include <vector>
+#include <memory>
 #include "Shoot.hpp"
 #include "Unit.h"
 #include "Weapon.hpp"
 #include "Fleet.h"
 #include "Engine.h"
 #include "Ship.h"
-#include <iostream>
-#include <sstream>
 
 
 #define MAIN_DIR "/Users/alterego4/GeneCode/temp/"

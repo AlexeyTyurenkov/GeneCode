@@ -9,18 +9,17 @@
 #ifndef Shoot_hpp
 #define Shoot_hpp
 
-#include <stdio.h>
 #include "GLOBAL_CONST.h"
 
 class Ship;
 
 class Shoot
 {
-    Ship* target;
+    std::weak_ptr<Ship> target;
     unsigned value;
     bool fired = false;
 public:
-    Shoot(Ship* target, unsigned value):target(target),value(value){ fired = false;};
+    Shoot(std::weak_ptr<Ship> target, unsigned value):target(target),value(value){ fired = false;};
     bool isFired();
     void fire();
 };

@@ -16,5 +16,10 @@ bool Shoot::isFired()
 
 void Shoot::fire()
 {
-    target->hit(value);
+    std::shared_ptr<Ship> target = this->target.lock();
+    if (target)
+    {
+        target->hit(value);
+    }
+
 }

@@ -9,9 +9,6 @@
 #ifndef __etc__Fleet__
 #define __etc__Fleet__
 
-#include <stdio.h>
-#include <vector>
-
 #include "GLOBAL_CONST.h"
 
 class Ship;
@@ -29,7 +26,7 @@ enum BattleResult: uint8_t {
 class Fleet
 {
 private:
-    std::vector<Ship*> ships;
+    std::vector<std::shared_ptr<Ship>> ships;
     int quality = 0;
     bool canFire();
     void salvo(std::vector<Shoot>& salvo, Fleet* enemy);
@@ -40,7 +37,7 @@ public:
     ~Fleet();
     
     size_t visibleCount();
-    Ship* randomShip();
+    std::shared_ptr<Ship> randomShip();
     
     
     void print();

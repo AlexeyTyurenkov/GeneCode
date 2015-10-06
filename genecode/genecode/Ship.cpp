@@ -61,15 +61,11 @@ void Ship::compress()
     _speed  = (double)std::accumulate(engines.begin(), engines.end(), 0, [](uint64_t power, Engine* engine){return power + engine->power();})/_weight;
 }
 
-bool Ship::shouldRemove(Ship * it)
+bool Ship::shouldRemove(std::shared_ptr<Ship> it)
 {
     it->compress();
-    bool result = it->units.size() == 0;
-    if (result)
-    {
-        delete it;
-    }
-    return result;
+    return it->units.size() == 0;
+
 }
 
 
