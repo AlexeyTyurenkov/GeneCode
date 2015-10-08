@@ -15,7 +15,7 @@
 #include "GLOBAL_CONST.h"
 
 
-class Gun : public Weapon{
+class LaserGun : public Weapon{
     
     unsigned calmdown = 0;
     double calibrationParameter = 0.3;
@@ -23,7 +23,7 @@ class Gun : public Weapon{
 protected:
     virtual double calibration() {return calibrationParameter;};
 public:
-    Gun(unsigned value):Weapon(value){};
+    LaserGun(unsigned value):Weapon(value){};
 
     
     virtual void fire(std::vector<Shoot> &salvo, Fleet *enemy, double ourspeed);

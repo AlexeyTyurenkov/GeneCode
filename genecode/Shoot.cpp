@@ -9,17 +9,25 @@
 #include "Shoot.hpp"
 #include "Ship.h"
 
-bool Shoot::isFired()
+bool Shoot::canBeRemoved()
 {
-    return fired;
+    return fired || !target.lock();
 }
 
 void Shoot::fire()
 {
-    std::shared_ptr<Ship> target = this->target.lock();
-    if (target)
+    if (!distance)
     {
-        target->hit(value);
+        std::shared_ptr<Ship> target = this->target.lock();
+        if (target)
+        {
+            target->hit(value);
+            fired = true;
+        }
+    }
+    else
+    {
+        distance--;
     }
 
 }

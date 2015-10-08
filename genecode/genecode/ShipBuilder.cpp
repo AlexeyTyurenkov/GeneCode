@@ -8,7 +8,7 @@
 
 #include "ShipBuilder.h"
 #include "Engine.h"
-#include "Gun.h"
+#include "LaserGun.h"
 #include "Shield.h"
 #include "GaussCannon.hpp"
 
@@ -27,7 +27,7 @@ void ShipBuilder::addShield(unsigned int value)
 
 void ShipBuilder::addGun(unsigned int value)
 {
-    std::shared_ptr<Gun> gun = std::make_shared<Gun>(value);
+    std::shared_ptr<LaserGun> gun = std::make_shared<LaserGun>(value);
     units.push_back(gun);
     weapon.push_back(gun);
 }

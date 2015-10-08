@@ -18,9 +18,10 @@ class Shoot
     std::weak_ptr<Ship> target;
     unsigned value;
     bool fired = false;
+    unsigned distance;
 public:
-    Shoot(std::weak_ptr<Ship> target, unsigned value):target(target),value(value){ fired = false;};
-    bool isFired();
+    Shoot(std::weak_ptr<Ship> target, unsigned value, unsigned distance):target(target),value(value),distance(distance){ fired = false;};
+    bool canBeRemoved();
     void fire();
 };
 

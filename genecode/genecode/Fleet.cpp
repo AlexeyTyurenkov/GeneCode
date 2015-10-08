@@ -109,23 +109,25 @@ BattleResult Fleet::result(Fleet *other)
     bool IcanFire = canFire();
     bool TheyCanFire = other->canFire();
     bool fired = false;
+    std::vector<Shoot> salvo;
     while (IcanFire && TheyCanFire)
     {
-        std::vector<Shoot> salvo;
+
         
         this->salvo(salvo, other);
         other->salvo(salvo, this);
         fired = salvo.size() > 0;
-        for (auto shoot: salvo)
+        for (auto&& shoot: salvo)
         {
             shoot.fire();
         }
-        
         compress();
         other->compress();
+        salvo.erase(std::remove_if(salvo.begin(), salvo.end(), [](Shoot shoot){return shoot.canBeRemoved();}), salvo.end());
         
         IcanFire = canFire();
         TheyCanFire = other->canFire();
+        
     }
     
     if (IcanFire && !TheyCanFire)

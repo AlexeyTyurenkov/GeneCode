@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 com.ovt. All rights reserved.
 //
 
-#include "Gun.h"
+#include "LaserGun.h"
 #include <iostream>
 #include <cmath>
 
@@ -14,7 +14,7 @@
 
 
 
-void Gun::fire(std::vector<Shoot> &salvo, Fleet *enemy, double ourspeed)
+void LaserGun::fire(std::vector<Shoot> &salvo, Fleet *enemy, double ourspeed)
 {
     if (calmdown)
     {
@@ -28,7 +28,7 @@ void Gun::fire(std::vector<Shoot> &salvo, Fleet *enemy, double ourspeed)
             std::shared_ptr<Ship> selectedShip = enemy->randomShip();
             if(isHitEnemy(ourspeed, selectedShip->speed()))
             {
-                salvo.push_back(Shoot(selectedShip, value));
+                salvo.push_back(Shoot(selectedShip, value, 0));
             }
             calmdown = log(value);
         }
@@ -38,7 +38,7 @@ void Gun::fire(std::vector<Shoot> &salvo, Fleet *enemy, double ourspeed)
 
 
 
-unsigned Gun::hit(unsigned int damage)
+unsigned LaserGun::hit(unsigned int damage)
 {
     value = 0;
     return 0;
@@ -46,12 +46,12 @@ unsigned Gun::hit(unsigned int damage)
 
 
 
-void Gun::print()
+void LaserGun::print()
 {
     std::cout << "Gun:" << value << std::endl;
 }
 
-std::string Gun::json()
+std::string LaserGun::json()
 {
     std::ostringstream result;
     result << "{ \"type\":\"Gun\", \"value\":" << value << "}";

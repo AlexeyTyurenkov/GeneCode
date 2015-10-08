@@ -18,7 +18,7 @@
 		D9B3805F1BBC7A21001BF29A /* Unit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D9B380581BBC7A21001BF29A /* Unit.cpp */; };
 		D9B380601BBC7A21001BF29A /* ShipBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D9B380591BBC7A21001BF29A /* ShipBuilder.cpp */; };
 		D9B380611BBC7A21001BF29A /* Ship.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D9B3805B1BBC7A21001BF29A /* Ship.cpp */; };
-		D9B380661BBC872A001BF29A /* Gun.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D9B380641BBC872A001BF29A /* Gun.cpp */; };
+		D9B380661BBC872A001BF29A /* LaserGun.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D9B380641BBC872A001BF29A /* LaserGun.cpp */; };
 		D9B380691BBC87AC001BF29A /* Engine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D9B380671BBC87AC001BF29A /* Engine.cpp */; };
 /* End PBXBuildFile section */
 
@@ -58,8 +58,8 @@
 		D9B3805A1BBC7A21001BF29A /* Ship.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Ship.h; path = genecode/Ship.h; sourceTree = "<group>"; };
 		D9B3805B1BBC7A21001BF29A /* Ship.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Ship.cpp; path = genecode/Ship.cpp; sourceTree = "<group>"; };
 		D9B380621BBC7A78001BF29A /* GLOBAL_CONST.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLOBAL_CONST.h; sourceTree = "<group>"; };
-		D9B380641BBC872A001BF29A /* Gun.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Gun.cpp; path = genecode/Gun.cpp; sourceTree = "<group>"; };
-		D9B380651BBC872A001BF29A /* Gun.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Gun.h; path = genecode/Gun.h; sourceTree = "<group>"; };
+		D9B380641BBC872A001BF29A /* LaserGun.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = LaserGun.cpp; path = genecode/LaserGun.cpp; sourceTree = "<group>"; };
+		D9B380651BBC872A001BF29A /* LaserGun.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LaserGun.h; path = genecode/LaserGun.h; sourceTree = "<group>"; };
 		D9B380671BBC87AC001BF29A /* Engine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Engine.cpp; path = genecode/Engine.cpp; sourceTree = "<group>"; };
 		D9B380681BBC87AC001BF29A /* Engine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Engine.h; path = genecode/Engine.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -93,8 +93,8 @@
 				D95EC4CC1BC13D8A00E49DF1 /* GaussCannon.hpp */,
 				D9B380671BBC87AC001BF29A /* Engine.cpp */,
 				D9B380681BBC87AC001BF29A /* Engine.h */,
-				D9B380641BBC872A001BF29A /* Gun.cpp */,
-				D9B380651BBC872A001BF29A /* Gun.h */,
+				D9B380641BBC872A001BF29A /* LaserGun.cpp */,
+				D9B380651BBC872A001BF29A /* LaserGun.h */,
 				D9B380621BBC7A78001BF29A /* GLOBAL_CONST.h */,
 				D95EC4C51BBEA84400E49DF1 /* Shoot.cpp */,
 				D95EC4C61BBEA84400E49DF1 /* Shoot.hpp */,
@@ -191,7 +191,7 @@
 				D95EC4EC1BC46D1A00E49DF1 /* Being.cpp in Sources */,
 				D9B3805E1BBC7A21001BF29A /* gclass.cpp in Sources */,
 				D9B380601BBC7A21001BF29A /* ShipBuilder.cpp in Sources */,
-				D9B380661BBC872A001BF29A /* Gun.cpp in Sources */,
+				D9B380661BBC872A001BF29A /* LaserGun.cpp in Sources */,
 				D9B3805C1BBC7A21001BF29A /* Fleet.cpp in Sources */,
 				D95EC4CD1BC13D8B00E49DF1 /* GaussCannon.cpp in Sources */,
 				D9B3805D1BBC7A21001BF29A /* Shield.cpp in Sources */,
