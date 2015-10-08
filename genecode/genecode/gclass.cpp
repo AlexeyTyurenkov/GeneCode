@@ -108,6 +108,28 @@ void Gclass::mutation()
             internalArray[i]^= 1 << rand()%(sizeof(shima_t)*8);
         }
     }
+    //insert random gene
+    if (RADIATION > (rand()%MAX_SCALE))
+    {
+        size_t position = internalArray.size() != 0 ?rand()%internalArray.size() : 0;
+        shima_t shima   = rand();
+        
+        internalArray.insert(internalArray.begin() + position,shima);
+    }
+    //Swap two or delete
+    if ((internalArray.size() > 1) && (RADIATION > (rand()%MAX_SCALE)))
+    {
+        size_t position1 = rand()%internalArray.size();
+        size_t position2 = rand()%internalArray.size();
+        if(position1 == position2)
+        {
+            internalArray.erase(internalArray.begin()+position1);
+        }
+        else
+        {
+            std::iter_swap(internalArray.begin() + position1, internalArray.begin() + position2);
+        }
+    }
 }
 
 
@@ -153,15 +175,9 @@ Gclass* Gclass::crossover(Gclass *gene)
             result->internalArray.push_back(*it);
         for(auto it = internalArray.end() - myGenes; it != internalArray.end(); it++) result->internalArray.push_back(*it);
     }
-    //insert random gene
-    if (RADIATION > (rand()%MAX_SCALE))
-    {
-        size_t position = internalArray.size() != 0 ?rand()%internalArray.size() : 0;
-        shima_t shima   = rand();
-        
-        internalArray.insert(internalArray.begin() + position,shima);
-    }
+
     result->filename = random_string(16);
+    result->mutation();
     return result;
 }
 
