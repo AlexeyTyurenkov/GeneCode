@@ -2,6 +2,7 @@ cmake_minimum_required(VERSION 2.8) # Проверка версии CMake.
 # Если версия установленой программы
 # старее указаной, произайдёт аварийный выход.
 
+set(CMAKE_CXX_COMPILER "clang++")
 
 set(CMAKE_CXX_FLAGS                "-Wall -std=c++11")
 set(CMAKE_CXX_FLAGS_DEBUG          "-O0 -g")
