@@ -10,6 +10,7 @@
 #include <fstream>
 #include <iostream>
 #include <algorithm>
+#include <cstring>
 #include "GLOBAL_CONST.h"
 
 using namespace std;
