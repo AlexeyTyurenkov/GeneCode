@@ -41,7 +41,7 @@ public:
     
     
     void print();
-    std::string json();
+    std::string json(uint64_t score);
 };
 
 

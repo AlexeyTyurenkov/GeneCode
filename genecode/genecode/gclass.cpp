@@ -82,11 +82,13 @@ bool Gclass::save(std::string dir)
 
 void Gclass::saveJSON(std::string dir)
 {
-    ofstream outfile(dir + filename+ ".json", ios_base::out|ios::trunc);
+    ostringstream realfileName;
+    realfileName << dir << score << "-" << filename << ".json";
+    ofstream outfile(realfileName.str(), ios_base::out|ios::trunc);
     if (outfile.is_open())
     {
         Fleet* fleet = fleetCreate();
-        outfile << fleet->json();
+        outfile << fleet->json(score);
         delete fleet;
         outfile.close();
 

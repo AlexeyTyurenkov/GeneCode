@@ -10,7 +10,7 @@
 #define __etc__gclass__
 
 
-#include "GLOBAL_CONST.h"
+#include "../GLOBAL_CONST.h"
 
 
 

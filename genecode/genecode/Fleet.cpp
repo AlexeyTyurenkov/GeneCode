@@ -202,7 +202,7 @@ void Fleet::print()
 }
 
 
-std::string Fleet::json()
+std::string Fleet::json(uint64_t score)
 {
     std::ostringstream result;
     result << "{\"count\":" << ships.size() << "," <<"\"ships\":[";
@@ -222,7 +222,7 @@ std::string Fleet::json()
             }
             result << (*ships.rbegin())->json();
     }
-    result << "],\"effectivness\":" << quality << "}";
+    result << "],\"effectivness\":" << quality << ",\"score\":"<< score << "}";
     return result.str();
 }
 
