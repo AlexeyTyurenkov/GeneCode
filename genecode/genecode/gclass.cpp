@@ -9,6 +9,7 @@
 #include "gclass.h"
 #include <fstream>
 #include <iostream>
+#include <algorithm>
 #include "GLOBAL_CONST.h"
 
 using namespace std;
