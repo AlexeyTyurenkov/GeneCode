@@ -11,6 +11,7 @@
 #include <cstdlib>
 #include <iostream>
 #include <sstream>
+#include <algorithm>
 
 typedef enum {
     kStopStart = 0,
