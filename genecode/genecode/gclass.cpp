@@ -157,7 +157,7 @@ bool Gclass::betterThan(const Gclass *other) const
 
 size_t randomMedium(size_t length)
 {
-    long result = length/2 + (RADIATION > (rand()%MAX_SCALE)?rand()%3 -1 :0 );
+    long result = length/2 + ((RADIATION > (rand()%MAX_SCALE))?((rand()%7) -3):0 );
     result = result > 0? result:0;
     result = length < result? length: result;
     return result;

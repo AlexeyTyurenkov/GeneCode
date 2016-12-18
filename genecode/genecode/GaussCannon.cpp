@@ -29,7 +29,7 @@ void GaussCannon::fire(std::vector<Shoot> &salvo, Fleet *enemy, double ourspeed)
                 }
             }
             //When we fired to object
-            reloadTurns = sqrt(value);
+            reloadTurns = log(value);
         }
     }
 }
